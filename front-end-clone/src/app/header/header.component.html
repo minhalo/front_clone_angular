@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-xl">
+    <a class="navbar-brand text-danger m-0 p-1" href="#">FLAME</a>
+
+    <ul class="navbar-nav mr-auto flex-row gap-2">
+      <li class="nav-item p-1">
+        <a class="nav-link" href="#">Cart</a>
+      </li>
+      <li class="nav-item p-1">
+        <div
+          class="btn-group"
+          dropdown
+          container="body"
+          *ngIf="token$ | async; else thenBlock"
+        >
+          <a
+            id="button-container"
+            dropdownToggle
+            type="button"
+            class="nav-link"
+            type="button"
+            aria-controls="dropdown-container"
+          >
+            {{ name$ | async }} <span class="caret"></span>
+          </a>
+          <ul
+            id="dropdown-menu-dividers"
+            *dropdownMenu
+            class="dropdown-menu ul"
+            role="menu"
+            aria-labelledby="button-container"
+          >
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Profile</a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <ng-template #thenBlock
+          ><a
+            href="#"
+            type="button"
+            class="nav-link"
+            (click)="openModal(template)"
+            >Login</a
+          ></ng-template
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Login</h4>
+    <a
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </a>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="form_login">
+      <div class="username">
+        <label for="name" style="font-size: 20px"> Email </label>
+        <input
+          id="email"
+          type="text"
+          formControlName="email"
+          class="inputUsername"
+        />
+        <p class="err_login" *ngIf="(errCode$ | async) == 2">
+          {{ errMes$ | async }}
+        </p>
+      </div>
+
+      <div class="password">
+        <label for="address" style="font-size: 20px"> Password </label>
+        <input
+          id="password"
+          type="text"
+          formControlName="password"
+          class="inputPassword"
+        />
+
+        <p class="err_login" *ngIf="(errCode$ | async) == 1">
+          {{ errMes$ | async }}
+        </p>
+      </div>
+
+      <div class="btn_container">
+        <button class="button" type="submit">Login</button>
+        <p class="forgot">Forgot password</p>
+      </div>
+    </form>
+  </div>
+</ng-template>

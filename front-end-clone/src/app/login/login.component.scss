@@ -1,0 +1,88 @@
+.main_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background-color: #4e54c8;
+  .form_login {
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 999;
+    position: absolute;
+    width: 360px;
+    height: 350px;
+    border-radius: 5px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    .err {
+      font-size: calc(1rem * 0.8);
+      color: lightcoral;
+      margin: 0;
+      font-weight: bold;
+    }
+    .username {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      .inputUsername {
+        padding-left: 3%;
+        opacity: 0.7;
+        border: 1px solid gainsboro;
+        width: 100%;
+        height: 35px;
+        outline: none;
+        border-radius: 2px 2px;
+        &:focus {
+          border: 1px solid lightgreen;
+        }
+      }
+    }
+    .password {
+      flex-direction: column;
+      display: flex;
+      justify-content: space-between;
+      .inputPassword {
+        padding-left: 3%;
+        opacity: 0.7;
+        border: 1px solid gainsboro;
+        width: 100%;
+        height: 35px;
+        outline: none;
+        border-radius: 2px 2px;
+        &:focus {
+          border: 1px solid lightgreen;
+        }
+      }
+    }
+
+    .btn_container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .button {
+        width: 6vw;
+        border: none;
+        height: 35px;
+        background-color: #4e54c8;
+        color: white;
+        font-weight: bold;
+        &:hover {
+          color: lightblue;
+        }
+      }
+    }
+  }
+}
+a {
+  font-size: calc(1rem * 0.9);
+  text-decoration: none;
+}
