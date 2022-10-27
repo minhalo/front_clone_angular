@@ -50,10 +50,22 @@ export class HeaderComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+  openModal1(template1: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template1);
+  }
   checkoutForm = this.formBuilder.group({
     email: '',
     password: '',
   });
+
+  checkoutFormReg = this.formBuilder.group({
+    email: '',
+    password: '',
+    cpassword: '',
+  });
+
+  onSubmitReg() {}
+
   onSubmit() {
     this.store.dispatch(
       formAction.loginRequest({

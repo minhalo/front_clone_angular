@@ -3,7 +3,7 @@
     <a class="navbar-brand text-danger m-0 p-1" href="#">FLAME</a>
 
     <ul class="navbar-nav mr-auto flex-row gap-2">
-      <li class="nav-item p-1">
+      <li *ngIf="token$ | async" class="nav-item p-1">
         <a class="nav-link" href="#">Cart</a>
       </li>
       <li class="nav-item p-1">
@@ -47,6 +47,16 @@
             (click)="openModal(template)"
             >Login</a
           ></ng-template
+        >
+      </li>
+      <li *ngIf="!(token$ | async)" class="nav-item p-1">
+        <a
+          class="nav-link"
+          href="#"
+          type="button"
+          class="nav-link"
+          (click)="openModal1(template1)"
+          >Register</a
         >
       </li>
     </ul>
@@ -97,6 +107,72 @@
       <div class="btn_container">
         <button class="button" type="submit">Login</button>
         <p class="forgot">Forgot password</p>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Register</h4>
+    <a
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </a>
+  </div>
+  <div class="modal-body">
+    <form
+      [formGroup]="checkoutFormReg"
+      (ngSubmit)="onSubmitReg()"
+      class="form_login"
+    >
+      <div class="username">
+        <label for="name" style="font-size: 20px"> Email </label>
+        <input
+          id="email"
+          type="text"
+          formControlName="email"
+          class="inputUsername"
+        />
+        <p class="err_login" *ngIf="(errCode$ | async) == 2">
+          {{ errMes$ | async }}
+        </p>
+      </div>
+
+      <div class="password">
+        <label for="address" style="font-size: 20px"> Password </label>
+        <input
+          id="password"
+          type="text"
+          formControlName="password"
+          class="inputPassword"
+        />
+
+        <p class="err_login" *ngIf="(errCode$ | async) == 1">
+          {{ errMes$ | async }}
+        </p>
+      </div>
+
+      <div class="cpassword">
+        <label for="cpassword" style="font-size: 20px"> Password </label>
+        <input
+          id="cpassword"
+          type="text"
+          formControlName="cpassword"
+          class="inputPassword"
+        />
+
+        <p class="err_login" *ngIf="(errCode$ | async) == 1">
+          {{ errMes$ | async }}
+        </p>
+      </div>
+
+      <div class="btn_container">
+        <button class="button" type="submit">Register</button>
       </div>
     </form>
   </div>
