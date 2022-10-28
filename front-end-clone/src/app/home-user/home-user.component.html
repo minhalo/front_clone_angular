@@ -1,7 +1,7 @@
 <app-header></app-header>
 <!-- {{ token$ | async }} -->
 
-<div class="category d-flex align-items-center">
+<!-- <div class="category d-flex align-items-center">
   <div class="container-xl">
     <div class="btn_category" dropdown container="body">
       <a
@@ -15,7 +15,9 @@
       </a>
       <ul
         id="dropdown-menu-dividers"
-        *dropdownMenu
+
+
+
         class="dropdown-menu ul"
         role="menu"
         aria-labelledby="button-container"
@@ -35,8 +37,8 @@
       <div class="col">2 of 3 (wider)</div>
       <div class="col">3 of 3</div>
     </div>
-  </div>
-  <!-- <div class="container-xl child_container row">
+  </div> -->
+<!-- <div class="container-xl child_container row">
     <div class="col-4 container_grand left_container">
       <ul class="category">
         <li *ngFor="let item of categot">{{ item.name }}</li>
@@ -162,7 +164,7 @@
       </div>
     </div>
   </div> -->
-  <div>
+<!-- <div>
     <pagination
       class="pagination flex-wrap container-xl"
       [boundaryLinks]="true"
@@ -174,6 +176,11 @@
     >
     </pagination>
   </div>
+</div> -->
+
+<div class="main_body">
+  <app-leftbar class="main_left"></app-leftbar>
+  <app-rightbar class="main_right"></app-rightbar>
 </div>
 
 <app-footer></app-footer>

@@ -7,10 +7,6 @@ import * as formAction from '../state/auth/auth.actions';
 import { Router } from '@angular/router';
 import { AuthAPIService } from './../services/auth-api.service';
 import { FormBuilder } from '@angular/forms';
-export interface cate {
-  id: number;
-  name: string;
-}
 
 @Component({
   selector: 'app-home-user',
@@ -18,7 +14,6 @@ export interface cate {
   styleUrls: ['./home-user.component.scss'],
 })
 export class HomeUserComponent implements OnInit {
-  categot: cate[] = [];
   constructor(
     private store: Store<AppStateInterface>,
     private router: Router,
@@ -26,10 +21,5 @@ export class HomeUserComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {
-    this.AuthAPIService.category().subscribe((response) => {
-      this.categot = response;
-
-    });
-  }
+  ngOnInit(): void {}
 }

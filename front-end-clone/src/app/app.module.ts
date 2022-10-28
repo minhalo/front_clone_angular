@@ -23,6 +23,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { LeftbarComponent } from './leftbar/leftbar.component';
+import { RightbarComponent } from './rightbar/rightbar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     HomeAdminComponent,
     HeaderComponent,
     FooterComponent,
+    LeftbarComponent,
+    RightbarComponent,
   ],
   imports: [
     PaginationModule.forRoot(),

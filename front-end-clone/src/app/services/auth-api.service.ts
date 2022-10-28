@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { login } from '../model/auth';
-import { cate } from '../home-user/home-user.component';
+import { cate } from '../model/cate';
 
 @Injectable({
   providedIn: 'root',

@@ -50,9 +50,7 @@ export class HeaderComponent implements OnInit {
     this.ischeck$ = this.store.pipe(select(isLoadingSelector));
   }
 
-  ngOnInit(): void {
-    console.log(this.errMes$);
-  }
+  ngOnInit(): void {}
   logout() {
     this.isloading = false;
     this.isCheckLogin = false;
