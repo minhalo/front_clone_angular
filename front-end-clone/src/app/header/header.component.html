@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-xl">
-    <a class="navbar-brand text-danger m-0 p-1" href="#">FLAME</a>
+    <a class="navbar-brand text-danger m-0 p-1">FLAME</a>
 
     <ul class="navbar-nav mr-auto flex-row gap-2">
       <li *ngIf="token$ | async" class="nav-item p-1">
-        <a class="nav-link" href="#">Cart</a>
+        <a class="nav-link">Cart</a>
       </li>
       <li class="nav-item p-1">
         <div
@@ -18,7 +18,6 @@
             dropdownToggle
             type="button"
             class="nav-link"
-            type="button"
             aria-controls="dropdown-container"
           >
             {{ name$ | async }} <span class="caret"></span>
@@ -31,20 +30,16 @@
             aria-labelledby="button-container"
           >
             <li role="menuitem">
-              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item">Profile</a>
             </li>
             <li class="divider dropdown-divider"></li>
             <li role="menuitem">
-              <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
             </li>
           </ul>
         </div>
         <ng-template #thenBlock
-          ><a
-            href="#"
-            type="button"
-            class="nav-link"
-            (click)="openModal(template)"
+          ><a type="button" class="nav-link" (click)="openModal(template)"
             >Login</a
           ></ng-template
         >
@@ -52,7 +47,6 @@
       <li *ngIf="!(token$ | async)" class="nav-item p-1">
         <a
           class="nav-link"
-          href="#"
           type="button"
           class="nav-link"
           (click)="openModal1(template1)"
@@ -77,36 +71,41 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="form_login">
-      <div class="username">
-        <label for="name" style="font-size: 20px"> Email </label>
+      <div class="mb-3">
+        <label for="Email" class="col-form-label">Email:</label>
         <input
-          id="email"
+          placeholder="User@gmail.com"
           type="text"
+          class="form-control"
+          id="Email"
           formControlName="email"
-          class="inputUsername"
         />
-        <p class="err_login" *ngIf="(errCode$ | async) == 2">
+        <small class="text-danger" *ngIf="(errCode$ | async) == 2">
           {{ errMes$ | async }}
-        </p>
+        </small>
       </div>
 
-      <div class="password">
-        <label for="address" style="font-size: 20px"> Password </label>
+      <div class="mb-3">
+        <label for="Password" class="col-form-label">Password:</label>
         <input
-          id="password"
-          type="text"
+          placeholder="abc12345!"
+          type="password"
+          class="form-control"
+          id="Password"
           formControlName="password"
-          class="inputPassword"
         />
-
-        <p class="err_login" *ngIf="(errCode$ | async) == 1">
+        <small class="text-danger" *ngIf="(errCode$ | async) == 1">
           {{ errMes$ | async }}
-        </p>
+        </small>
       </div>
 
-      <div class="btn_container">
+      <div class="btn_container mb-3 mt-3">
         <button class="button" type="submit">Login</button>
-        <p class="forgot">Forgot password</p>
+        <img
+          *ngIf="isloading"
+          class="loading"
+          src="../../assets/Loading/loading.gif"
+        />
       </div>
     </form>
   </div>
@@ -130,50 +129,61 @@
       (ngSubmit)="onSubmitReg()"
       class="form_login"
     >
-      <div class="username">
-        <label for="name" style="font-size: 20px"> Email </label>
+      <div class="mb-3">
+        <label for="Email" class="col-form-label">Email:</label>
         <input
-          id="email"
+          placeholder="User@gmail.com"
           type="text"
+          class="form-control"
+          id="Email"
           formControlName="email"
-          class="inputUsername"
         />
-        <p class="err_login" *ngIf="(errCode$ | async) == 2">
-          {{ errMes$ | async }}
-        </p>
+        <small class="text-danger" *ngIf="errReg == 1">
+          {{ errMessageReg }}
+        </small>
       </div>
 
-      <div class="password">
-        <label for="address" style="font-size: 20px"> Password </label>
+      <div class="mb-3">
+        <label for="Password" class="col-form-label">Password:</label>
         <input
-          id="password"
-          type="text"
+          placeholder="abc12345!"
+          type="password"
+          class="form-control"
+          id="Password"
           formControlName="password"
-          class="inputPassword"
         />
-
-        <p class="err_login" *ngIf="(errCode$ | async) == 1">
-          {{ errMes$ | async }}
-        </p>
+        <small class="text-danger" *ngIf="errReg == 2">
+          {{ errMessageReg }}
+        </small>
       </div>
 
-      <div class="cpassword">
-        <label for="cpassword" style="font-size: 20px"> Password </label>
+      <div class="mb-3">
+        <label for="cpassword" class="col-form-label">Confirm Password:</label>
         <input
+          placeholder="abc12345!"
+          type="password"
+          class="form-control"
           id="cpassword"
-          type="text"
           formControlName="cpassword"
-          class="inputPassword"
         />
-
-        <p class="err_login" *ngIf="(errCode$ | async) == 1">
-          {{ errMes$ | async }}
-        </p>
       </div>
 
-      <div class="btn_container">
+      <div class="btn_container mb-3 mt-3">
         <button class="button" type="submit">Register</button>
       </div>
     </form>
   </div>
 </ng-template>
+
+<alert *ngIf="isCheckLogin" type="success" class="ele">
+  <strong>Hi {{ name$ | async }}</strong
+  >, have a nice day!
+</alert>
+
+<alert *ngIf="isCheckLogout" type="info" class="ele">
+  <strong>Good bye!</strong> see you soon.
+</alert>
+
+<alert *ngIf="isCheckRegister" type="info" class="ele">
+  <strong>Created Account Success!</strong>
+</alert>

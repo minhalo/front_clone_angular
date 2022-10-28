@@ -25,24 +25,29 @@
 }
 
 .btn_container {
-  margin-top: 15px;
   display: flex;
   justify-content: space-between;
 }
 
 .button {
+  border-radius: 5px 5px;
   border: none;
   background-color: #ff6766;
   color: rgb(255, 255, 255, 0.7);
   padding: 8px 20px;
   position: relative;
   transition: 1s;
+
   &:hover {
     background-color: #ffa7a7;
     color: rgb(0, 0, 0, 1);
   }
 }
 
+.loading {
+  width: 30px;
+  height: 30px;
+}
 .forgot {
   text-decoration: none;
   font-size: calc(1rem * 0.8);
@@ -52,5 +57,30 @@
   align-items: center;
   &:hover {
     color: blue;
+  }
+}
+
+.ele {
+  animation: 4s fadeIn;
+  animation-fill-mode: forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  position: absolute;
+  top: 5%;
+  width: 100%;
+  transition: ease-in-out;
+}
+
+@keyframes fadeIn {
+  50% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: visible;
+  }
+  95% {
+    visibility: hidden;
   }
 }

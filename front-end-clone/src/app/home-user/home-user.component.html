@@ -1,6 +1,179 @@
 <app-header></app-header>
 <!-- {{ token$ | async }} -->
 
-<div>ok</div>
+<div class="category d-flex align-items-center">
+  <div class="container-xl">
+    <div class="btn_category" dropdown container="body">
+      <a
+        id="button-container"
+        dropdownToggle
+        type="button"
+        class="nav-link"
+        aria-controls="dropdown-container"
+      >
+        <i class="bi bi-menu-app"></i> Category<span class="caret"></span>
+      </a>
+      <ul
+        id="dropdown-menu-dividers"
+        *dropdownMenu
+        class="dropdown-menu ul"
+        role="menu"
+        aria-labelledby="button-container"
+      >
+        <li *ngFor="let item of categot" role="menuitem">
+          <a class="dropdown-item" href="#">{{ item.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="main_container pt-4">
+  <div class="container-xl bg-light mb-3">
+    <div class="row">
+      <div class="col">1 of 3</div>
+      <div class="col">2 of 3 (wider)</div>
+      <div class="col">3 of 3</div>
+    </div>
+  </div>
+  <!-- <div class="container-xl child_container row">
+    <div class="col-4 container_grand left_container">
+      <ul class="category">
+        <li *ngFor="let item of categot">{{ item.name }}</li>
+      </ul>
+    </div>
+    <div class="col-8 container_grand listproduct">
+      <div class="top_product mb-3 row">
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15.5rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bot_product mb-3">
+
+
+      </div>
+    </div>
+  </div> -->
+  <div>
+    <pagination
+      class="pagination flex-wrap container-xl"
+      [boundaryLinks]="true"
+      [totalItems]="1000"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+    >
+    </pagination>
+  </div>
+</div>
 
 <app-footer></app-footer>

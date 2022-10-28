@@ -1,8 +1,8 @@
-import { authEffects,outEffects } from './state/auth/auth.effects';
+import { authEffects, outEffects } from './state/auth/auth.effects';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,19 +20,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
-
     AppComponent,
     LoginComponent,
     HomeUserComponent,
     HomeAdminComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
+    PaginationModule.forRoot(),
+    AccordionModule.forRoot(),
+    AlertModule.forRoot(),
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     PopoverModule.forRoot(),
@@ -41,12 +45,13 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,FormsModule,
-    StoreModule.forFeature("login", reducers),
-    EffectsModule.forRoot([authEffects,outEffects]),
+    ReactiveFormsModule,
+    FormsModule,
+    StoreModule.forFeature('login', reducers),
+    EffectsModule.forRoot([authEffects, outEffects]),
     StoreModule.forRoot({}),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

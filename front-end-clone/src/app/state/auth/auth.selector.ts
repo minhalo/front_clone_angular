@@ -21,3 +21,8 @@ export const nameSelector = createSelector(
   selectFeature,
   (state) => state.name
 );
+
+export const isLoadingSelector = createSelector(
+  selectFeature,
+  (state) => state.ischeck
+);

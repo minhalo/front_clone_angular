@@ -1,0 +1,20 @@
+.main_container {
+}
+
+.category {
+  height: 8vh;
+  background-color: white;
+  .btn_category {
+    display: inline-block;
+    border-radius: 5px 5px;
+    cursor: pointer;
+    padding: 4px 10px;
+    transition: 1s;
+    color: rgb(255, 255, 255, 0.7);
+    background-color: #ff6766;
+    &:hover {
+      background-color: #ffa7a7;
+      color: rgb(0, 0, 0, 1);
+    }
+  }
+}

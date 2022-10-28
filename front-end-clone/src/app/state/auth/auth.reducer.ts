@@ -3,7 +3,7 @@ import { login } from '../../model/auth';
 import * as formAction from '../auth/auth.actions';
 
 export const initialState: login = {
-  ischeck: false,
+  ischeck: Boolean(localStorage.getItem('ischeck')),
   errCode: -1,
   message: '',
   status: -1,
@@ -16,7 +16,7 @@ export const reducers = createReducer(
   on(formAction.loginRequest, (state) => ({ ...state, ischeck: true })),
   on(formAction.loginSuccess, (state, action) => ({
     ...state,
-    ischeck: false,
+    ischeck: true,
     errCode: action.errCode,
     message: action.message,
     status: action.status,
