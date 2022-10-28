@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0;
-  background-color: #f3f4f6;
+  font-family: "Poppins medium";
 }
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
@@ -13,3 +13,20 @@ p {
 a {
   cursor: pointer;
 }
+
+@font-face {
+  font-family: "Poppins bold";
+  src: url("../src/assets/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Poppins thin";
+  src: url("../src/assets/Poppins-Light.ttf");
+}
+
+@font-face {
+  font-family: "Poppins medium";
+  src: url("../src/assets/Poppins-Medium.ttf");
+}
+
+// USAGE

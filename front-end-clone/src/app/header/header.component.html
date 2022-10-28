@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-xl">
     <a class="navbar-brand text-danger m-0 p-1">FLAME</a>
 
@@ -186,4 +186,19 @@
 
 <alert *ngIf="isCheckRegister" type="info" class="ele">
   <strong>Created Account Success!</strong>
-</alert>
+</alert> -->
+
+<div class="main_header_container">
+  <div class="header_left">
+    <div class="header_icon">Blin<i class="italic_header_p">der</i></div>
+    <div class="header_search">
+      <i class="bi bi-search header_icon_search"></i>
+      <input class="header_input" type="text" placeholder="Search" />
+    </div>
+    <div class="header_coin">Coin: {{ coin | number: ".2" }}</div>
+  </div>
+  <div class="header_right">
+    <div class="text_header_right">Sign in</div>
+    <div class="text_header_right">Sign up</div>
+  </div>
+</div>

@@ -20,6 +20,8 @@ import * as formAction from '../state/auth/auth.actions';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  coin: number = 1000000;
+
   modalRef?: BsModalRef;
   token$: Observable<String | null>;
   name$: Observable<String | null>;
