@@ -181,25 +181,13 @@
   <div class="child_carosel">
     <carousel [noPause]="false">
       <slide>
-        <img
-          src="../../assets/carosel/can1can1.jpg"
-          alt="First slide"
-          style="display: block; width: 100%"
-        />
+        <img src="../../assets/carosel/can1can1.jpg" alt="First slide" style="display: block; width: 100%" />
       </slide>
       <slide>
-        <img
-          src="../../assets/carosel/can2can2.png"
-          alt="Second slide"
-          style="display: block; width: 100%"
-        />
+        <img src="../../assets/carosel/can2can2.png" alt="Second slide" style="display: block; width: 100%" />
       </slide>
       <slide>
-        <img
-          src="../../assets/carosel/can3can3.jpg"
-          alt="Third slide"
-          style="display: block; width: 100%"
-        />
+        <img src="../../assets/carosel/can3can3.jpg" alt="Third slide" style="display: block; width: 100%" />
       </slide>
     </carousel>
   </div>
@@ -233,17 +221,12 @@
       Blinder is an online sales service platform developed by the DVC team. We
       target customers who want to buy the most popular game accounts and
       services. All genres of games like PUBG, LOL, AAA, we have them. Please
-      join us, thank you and honor!
+      join with us, thank you and honor!
     </div>
   </div>
   <div class="video_right">
-    <video
-      class="video"
-      #videocall
-      autoplay
-      src="../../assets/Video/video.mp4"
-      controls
-    ></video>
+    <video id="mydov" (play)="video($event)" class="video" #videocall autoplay src="../../assets/Video/video.mp4"
+      controls></video>
   </div>
 </div>
 

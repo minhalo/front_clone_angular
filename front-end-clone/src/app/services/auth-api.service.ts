@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { login } from '../model/auth';
 import { cate } from '../model/cate';
+import { product } from '../model/product';
 
 @Injectable({
   providedIn: 'root',
@@ -40,5 +41,11 @@ export class AuthAPIService {
 
   public category() {
     return this.http.get<cate[]>('http://localhost:8081/api/category');
+  }
+
+  public productPage(page?: number) {
+    return this.http.get<product[][]>(
+      `http://localhost:8081/api/product/page?page=${page}`
+    );
   }
 }

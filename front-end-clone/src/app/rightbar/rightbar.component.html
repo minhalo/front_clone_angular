@@ -1,18 +1,30 @@
 <div class="container text-center">
-  <div *ngFor="let k of a; let a = index" class="row">
-    {{ a + 3 }}
-    <div *ngFor="let i of test" class="col"></div>
+  <div *ngFor="let item of products" class="row mt-3">
+    <div *ngFor="let detail of item" class="col">
+      <div class="card h-100" style="width: 18rem">
+        <img *ngIf="detail.type == 'Pubg'" src="../../assets/List/pubg.jpeg" class="card-img-top list_img" alt="..." />
+        <img *ngIf="detail.type == 'Valorant'" src="../../assets/List/valorant.jpg" class="card-img-top list_img"
+          alt="..." />
+        <div class="card-body text-start">
+          <h5 class="card-title text-danger" style="font-family: arial">
+            {{ detail.name }} {{ detail.id }}
+          </h5>
+          <p class="card-text text-dark">
+            {{ detail.type }}
+          </p>
+          <p class="card-text text-dark">
+            {{ detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100) }}
+          </p>
+
+          <div class="btn btn-primary mt-3">Buy</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="pagin mt-5">
-  <pagination
-    class="pagination flex-wrap"
-    [boundaryLinks]="true"
-    [totalItems]="100"
-    previousText="&lsaquo;"
-    nextText="&rsaquo;"
-    firstText="&laquo;"
-    lastText="&raquo;"
-  >
+  <pagination class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="100" previousText="&lsaquo;"
+    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentpage"
+    (pageChanged)="pageChanged($event)">
   </pagination>
 </div>

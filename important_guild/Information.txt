@@ -1,0 +1,21 @@
+Scenario:
+Mạng xã hội cho giới trẻ
+
+Authentication:
+Đăng nhập, đăng kí, quên tài khoản.
+
+Home:
+Bạn bè, bài viết, Chat
+
+Friend: thêm sửa xóa
+Post: thêm sửa xóa (kèm ảnh) => comment
+Profile: hiển thị thông tin tài khoản
+chat: 1v1, 1vn
+setting: sửa xóa tài khoản
+Policy: chính sách
+
+
+tech:
+angular
+mysql
+expessJs
