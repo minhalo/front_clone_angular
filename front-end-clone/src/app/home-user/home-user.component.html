@@ -177,10 +177,74 @@
     </pagination>
   </div>
 </div> -->
+<div class="main_carosel">
+  <div class="child_carosel">
+    <carousel [noPause]="false">
+      <slide>
+        <img
+          src="../../assets/carosel/can1can1.jpg"
+          alt="First slide"
+          style="display: block; width: 100%"
+        />
+      </slide>
+      <slide>
+        <img
+          src="../../assets/carosel/can2can2.png"
+          alt="Second slide"
+          style="display: block; width: 100%"
+        />
+      </slide>
+      <slide>
+        <img
+          src="../../assets/carosel/can3can3.jpg"
+          alt="Third slide"
+          style="display: block; width: 100%"
+        />
+      </slide>
+    </carousel>
+  </div>
+  <div class="cas1">
+    <img class="cas1_img" src="../../assets/carosel/adobeadobe.png" />
+    <img class="cas1_img" src="../../assets/carosel/adobeadobe.png" />
+  </div>
+  <div class="cas2">
+    <img class="cas2_img" src="../../assets/carosel/adobeadobe.png" />
+    <img class="cas2_img" src="../../assets/carosel/adobeadobe.png" />
+  </div>
+  <div class="cas3">
+    <img class="cas3_img" src="../../assets/carosel/adobeadobe.png" />
+    <img class="cas3_img" src="../../assets/carosel/adobeadobe.png" />
+  </div>
+  <div class="cas4">
+    <img class="cas4_img" src="../../assets/carosel/adobeadobe.png" />
+    <img class="cas4_img" src="../../assets/carosel/adobeadobe.png" />
+  </div>
+</div>
 
 <div class="main_body">
   <app-leftbar class="main_left"></app-leftbar>
   <app-rightbar class="main_right"></app-rightbar>
+</div>
+
+<div class="main_video">
+  <div class="video_left">
+    <div class="video_header">What is Blinder?</div>
+    <div class="video_text">
+      Blinder is an online sales service platform developed by the DVC team. We
+      target customers who want to buy the most popular game accounts and
+      services. All genres of games like PUBG, LOL, AAA, we have them. Please
+      join us, thank you and honor!
+    </div>
+  </div>
+  <div class="video_right">
+    <video
+      class="video"
+      #videocall
+      autoplay
+      src="../../assets/Video/video.mp4"
+      controls
+    ></video>
+  </div>
 </div>
 
 <app-footer></app-footer>

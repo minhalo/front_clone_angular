@@ -25,6 +25,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { LeftbarComponent } from './leftbar/leftbar.component';
 import { RightbarComponent } from './rightbar/rightbar.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { RightbarComponent } from './rightbar/rightbar.component';
     RightbarComponent,
   ],
   imports: [
+    CarouselModule.forRoot(),
     PaginationModule.forRoot(),
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
