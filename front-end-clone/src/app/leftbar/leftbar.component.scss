@@ -1,50 +1,38 @@
 .category {
-  font-size: 1.2rem;
+  background-color: #202124;
   border-bottom: 1px solid #343539;
-  cursor: pointer;
-  transition: 2s;
-  font-weight: 100;
-  .cate_change {
-    transition: 2s;
-    color: blue;
-  }
-}
-
-.category_child {
-  text-align: center;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #343539;
-  transition: 1s;
-  border-radius: 5px 5px;
-  &:hover {
-    background: lightblue;
-    color: black;
-  }
-}
-
-@media only screen and (max-device-width: 582px) and (min-device-width: 459px) {
-  .category {
-    font-size: 1rem;
-  }
-
-  .category_child {
-    font-size: 0.8rem;
-  }
-}
-
-@media only screen and (max-device-width: 458px) {
-  .category {
-    font-size: calc(1rem * 0.8);
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-  }
-
-  .category_child {
-    font-size: calc(1rem * 0.6);
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
+  color: white;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  .btn_cat {
+    background-color: darkred;
+    color: lightpink;
+    padding: 5px 10px;
+    border-radius: 5px 5px;
+    transition: 1s;
+    cursor: pointer;
+    font-weight: lighter;
+    .menu_cate {
+      background-color: #343539;
+      color: white;
+      .list {
+        color: white;
+        transition: 1s;
+        &:hover {
+          color: black;
+        }
+      }
+    }
+    &:hover {
+      background-color: lightpink;
+      color: darkred;
+      transition: 1s;
+      .pass {
+        color: darkblue;
+        transition: 1s;
+      }
+    }
   }
 }

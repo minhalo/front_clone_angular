@@ -19,22 +19,6 @@
 //   }
 // }
 
-.main_body {
-  display: flex;
-  padding: 10px 10px;
-  background-color: #202124;
-  border-bottom: 1px solid #343539;
-  color: white;
-  .main_left {
-    width: 20%;
-    border-right: 1px solid #343539;
-    padding-right: 10px;
-  }
-  .main_right {
-    width: 80%;
-    padding-left: 10px;
-  }
-}
 .main_carosel {
   padding: 10px 10px;
   background-color: #fad961;

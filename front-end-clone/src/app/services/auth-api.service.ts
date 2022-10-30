@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { login } from '../model/auth';
 import { cate } from '../model/cate';
 import { product } from '../model/product';
+import { page } from '../model/page';
 
 @Injectable({
   providedIn: 'root',
@@ -47,5 +48,9 @@ export class AuthAPIService {
     return this.http.get<product[][]>(
       `http://localhost:8081/api/product/page?page=${page}`
     );
+  }
+
+  public page() {
+    return this.http.get<page>(`http://localhost:8081/api/page`);
   }
 }

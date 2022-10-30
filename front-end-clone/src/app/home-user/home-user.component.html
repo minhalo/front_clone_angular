@@ -209,10 +209,10 @@
   </div>
 </div>
 
-<div class="main_body">
-  <app-leftbar class="main_left"></app-leftbar>
-  <app-rightbar class="main_right"></app-rightbar>
-</div>
+
+<app-leftbar></app-leftbar>
+<app-rightbar></app-rightbar>
+
 
 <div class="main_video">
   <div class="video_left">
@@ -225,8 +225,7 @@
     </div>
   </div>
   <div class="video_right">
-    <video id="mydov" (play)="video($event)" class="video" #videocall autoplay src="../../assets/Video/video.mp4"
-      controls></video>
+    <video id="mydov" class="video" #videocall autoplay src="../../assets/Video/video.mp4" controls></video>
   </div>
 </div>
 
