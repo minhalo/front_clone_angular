@@ -4,6 +4,9 @@ import { login } from '../model/auth';
 import { cate } from '../model/cate';
 import { product } from '../model/product';
 import { page } from '../model/page';
+import { profile } from '../model/profile';
+import { user } from '../model/user';
+import { total } from '../model/total';
 
 @Injectable({
   providedIn: 'root',
@@ -52,5 +55,44 @@ export class AuthAPIService {
 
   public page() {
     return this.http.get<page>(`http://localhost:8081/api/page`);
+  }
+
+  public profile(token: String | null) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.get<profile>(
+      `http://localhost:8081/api/user/profile`,
+      requestOptions
+    );
+  }
+
+  public userManage(token: String | null, page?: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.get<user[]>(
+      `http://localhost:8081/api/user/page?page=${page}`,
+      requestOptions
+    );
+  }
+
+  public userManagePage(token: String | null) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.get<total>(
+      `http://localhost:8081/api/user/page/searchAll`,
+      requestOptions
+    );
   }
 }

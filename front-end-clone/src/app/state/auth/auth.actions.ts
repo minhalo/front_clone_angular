@@ -16,6 +16,8 @@ export const loginSuccess = createAction(
     status: Number;
     token: String | null;
     name: String | null;
+    role: String | null;
+    coin: Number;
   }>()
 );
 

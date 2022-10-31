@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<div class="main_profile">
+  <div *ngIf="(role$ | async) === 'Admin'"><img src="../../assets/avatar/admin.png" /></div>
+  <div>
+    <h5>Name: {{name}}</h5>
+    <p *ngIf="age">Age: {{age}}</p>
+    <p *ngIf="!age">Age: (none)</p>
+    <p>Gender: {{gender}}</p>
+    <p>Address: {{address}}</p>
+
+    <p *ngIf="gmail">Age: {{gmail}}</p>
+    <p *ngIf="!gmail">Age: (none)</p>
+    <p>Coin: {{coin | number: ".2"}} VND</p>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

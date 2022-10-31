@@ -6,6 +6,20 @@
   display: flex;
   align-items: center;
   padding: 5px 15px;
+  .admin {
+    margin-left: 1rem;
+    .btn_manage {
+      background-color: #343539;
+      border-radius: 5px 5px;
+      padding: 5px 7px;
+      transition: 1s;
+      cursor: pointer;
+      &:hover {
+        background-color: aliceblue;
+        color: black;
+      }
+    }
+  }
   .btn_cat {
     background-color: darkred;
     color: lightpink;

@@ -9,8 +9,11 @@
         <p>{{item.name}}</p>
       </li>
     </ul>
-
-
-
+  </div>
+  <div class="admin" *ngIf="(role$|async) === 'Admin'">
+    Admin
+  </div>
+  <div *ngIf="(role$|async) === 'Admin'" class=" admin">
+    <div class="btn_manage" routerLink="/manage">User Manage</div>
   </div>
 </div>

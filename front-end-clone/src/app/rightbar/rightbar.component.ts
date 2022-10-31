@@ -20,6 +20,7 @@ export class RightbarComponent implements OnInit {
   ngOnInit(): void {
     this.AuthAPIService.productPage(this.page).subscribe((response) => {
       this.products = response;
+      console.log(response);
     });
 
     // page

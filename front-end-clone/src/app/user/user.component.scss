@@ -1,0 +1,13 @@
+.main_profile {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+@media only screen and (max-device-width: 479px) {
+  .main_profile {
+    flex-direction: column !important;
+  }
+}

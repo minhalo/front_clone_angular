@@ -26,6 +26,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { LeftbarComponent } from './leftbar/leftbar.component';
 import { RightbarComponent } from './rightbar/rightbar.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { UserComponent } from './user/user.component';
+import { UserMangerComponent } from './user-manger/user-manger.component';
+import { ManageComponent } from './manage/manage.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     FooterComponent,
     LeftbarComponent,
     RightbarComponent,
+    UserComponent,
+    UserMangerComponent,
+    ManageComponent,
   ],
   imports: [
     CarouselModule.forRoot(),

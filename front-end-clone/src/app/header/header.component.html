@@ -57,59 +57,7 @@
   </div>
 </nav>
 
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Login</h4>
-    <a
-      type="button"
-      class="btn-close close pull-right"
-      aria-label="Close"
-      (click)="modalRef?.hide()"
-    >
-      <span aria-hidden="true" class="visually-hidden">&times;</span>
-    </a>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="form_login">
-      <div class="mb-3">
-        <label for="Email" class="col-form-label">Email:</label>
-        <input
-          placeholder="User@gmail.com"
-          type="text"
-          class="form-control"
-          id="Email"
-          formControlName="email"
-        />
-        <small class="text-danger" *ngIf="(errCode$ | async) == 2">
-          {{ errMes$ | async }}
-        </small>
-      </div>
 
-      <div class="mb-3">
-        <label for="Password" class="col-form-label">Password:</label>
-        <input
-          placeholder="abc12345!"
-          type="password"
-          class="form-control"
-          id="Password"
-          formControlName="password"
-        />
-        <small class="text-danger" *ngIf="(errCode$ | async) == 1">
-          {{ errMes$ | async }}
-        </small>
-      </div>
-
-      <div class="btn_container mb-3 mt-3">
-        <button class="button" type="submit">Login</button>
-        <img
-          *ngIf="isloading"
-          class="loading"
-          src="../../assets/Loading/loading.gif"
-        />
-      </div>
-    </form>
-  </div>
-</ng-template>
 
 <ng-template #template1>
   <div class="modal-header">
@@ -190,15 +138,107 @@
 
 <div class="main_header_container">
   <div class="header_left">
-    <div class="header_icon">Blin<i class="italic_header_p">der</i></div>
+    <div routerLink="/" class="header_icon">Blin<i class="italic_header_p">der</i></div>
     <div class="header_search">
       <i class="bi bi-search header_icon_search"></i>
       <input class="header_input" type="text" placeholder="Search" />
     </div>
-    <div class="header_coin">Coin: {{ coin | number: ".2" }}</div>
+    <div *ngIf="(token$|async)" class="header_coin">Coin: {{ coin | number: ".2" }}</div>
   </div>
   <div class="header_right">
-    <div class="text_header_right">Sign in</div>
-    <div class="text_header_right">Sign up</div>
+    <div *ngIf="!(token$|async)" class="text_header_right" (click)="openModal1(template)">Sign in</div>
+    <div *ngIf="!(token$|async)" class="text_header_right" (click)="openModal1(template1)">Sign up</div>
+
+
+    <div class="btn-group" dropdown container="body" *ngIf="(token$|async)">
+      <a *ngIf="(role$|async) === 'Admin'" id="button-container" dropdownToggle type="button" class="nav-link"
+        aria-controls="dropdown-container">
+        <img class="admin_img" src="../../assets/avatar/admin.png" /> <span class="caret"></span>
+      </a>
+      <a *ngIf="(role$|async) != 'Admin'" id="button-container" dropdownToggle type="button" class="nav-link"
+        aria-controls="dropdown-container">
+        <img class="admin_img" src="../../assets/avatar/user.png" /> <span class="caret"></span>
+      </a>
+      <ul id="dropdown-menu-dividers" *dropdownMenu class="dropdown-menu ul drop_down" role="menu"
+        aria-labelledby="button-container">
+        <li role="menuitem" (click)="profile()">
+          Profile
+        </li>
+        <li role="menuitem">
+          Cart
+        </li>
+
+        <li role="menuitem" (click)="logout()">
+          Logout
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
+
+
+<ng-template #template>
+  <div class="modal-body">
+    <h3>Login</h3>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="form_login">
+      <div class="mb-3">
+        <label for="Email" class="col-form-label">Email:</label>
+        <input placeholder="User@gmail.com" type="text" class="form-control" id="Email" formControlName="email" />
+        <small class="text-danger" *ngIf="(errCode$ | async) == 2">
+          {{ errMes$ | async }}
+        </small>
+      </div>
+
+      <div class="mb-3">
+        <label for="Password" class="col-form-label">Password:</label>
+        <input placeholder="abc12345!" type="password" class="form-control" id="Password" formControlName="password" />
+        <small class="text-danger" *ngIf="(errCode$ | async) == 1">
+          {{ errMes$ | async }}
+        </small>
+      </div>
+
+      <div class="btn_container mb-3 mt-3">
+        <button class="button" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Register</h4>
+    <a type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </a>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="checkoutFormReg" (ngSubmit)="onSubmitReg()" class="form_login">
+      <div class="mb-3">
+        <label for="Email" class="col-form-label">Email:</label>
+        <input placeholder="User@gmail.com" type="text" class="form-control" id="Email" formControlName="email" />
+        <small class="text-danger" *ngIf="errReg == 1">
+          {{ errMessageReg }}
+        </small>
+      </div>
+
+      <div class="mb-3">
+        <label for="Password" class="col-form-label">Password:</label>
+        <input placeholder="abc12345!" type="password" class="form-control" id="Password" formControlName="password" />
+        <small class="text-danger" *ngIf="errReg == 2">
+          {{ errMessageReg }}
+        </small>
+      </div>
+
+      <div class="mb-3">
+        <label for="cpassword" class="col-form-label">Confirm Password:</label>
+        <input placeholder="abc12345!" type="password" class="form-control" id="cpassword"
+          formControlName="cpassword" />
+      </div>
+
+      <div class="btn_container mb-3 mt-3">
+        <button class="button" type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

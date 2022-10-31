@@ -5,4 +5,6 @@ export interface login {
   status: Number;
   token: String | null;
   name: String | null;
+  role: String | null;
+  coin: Number;
 }

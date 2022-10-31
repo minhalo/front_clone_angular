@@ -26,3 +26,8 @@ export const isLoadingSelector = createSelector(
   selectFeature,
   (state) => state.ischeck
 );
+
+export const roleSelector = createSelector(
+  selectFeature,
+  (state) => state.role
+);

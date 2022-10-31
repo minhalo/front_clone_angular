@@ -9,6 +9,8 @@ export const initialState: login = {
   status: -1,
   token: localStorage.getItem('token'),
   name: localStorage.getItem('name'),
+  role: localStorage.getItem('role'),
+  coin: Number(localStorage.getItem('coin')),
 };
 
 export const reducers = createReducer(
@@ -22,6 +24,8 @@ export const reducers = createReducer(
     status: action.status,
     token: action.token,
     name: action.name,
+    role: action.role,
+    coin: action.coin,
   })),
 
   on(formAction.loginFailure, (state, action) => ({
@@ -36,5 +40,6 @@ export const reducers = createReducer(
     message: '',
     status: -1,
     token: null,
+    role: null,
   }))
 );

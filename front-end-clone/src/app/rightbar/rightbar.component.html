@@ -1,5 +1,5 @@
 <div class="main_right">
-  <div class="container text-center ">
+  <div class="container text-center " id="right">
     <div *ngFor="let item of products" class="row">
       <div *ngFor="let detail of item" class="col d-flex justify-content-center align-items-center"
         style="margin-top: 4rem;">
@@ -42,8 +42,8 @@
     </div>
   </div>
   <div class="pagin mt-5" style="padding: 0 20px;">
-    <pagination class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="pageon" previousText=" &lsaquo;"
-      nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentpage"
+    <pagination #refect class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="pageon"
+      previousText=" &lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentpage"
       (pageChanged)="pageChanged($event)">
     </pagination>
   </div>

@@ -1,6 +1,7 @@
 import {
   errSelector,
   mesSelector,
+  roleSelector,
   isLoadingSelector,
 } from './../state/auth/auth.selector';
 import { Component, OnInit, TemplateRef } from '@angular/core';
@@ -20,7 +21,7 @@ import * as formAction from '../state/auth/auth.actions';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  coin: number = 1000000;
+  coin: number = Number(localStorage.getItem('coin'));
 
   modalRef?: BsModalRef;
   token$: Observable<String | null>;
@@ -29,13 +30,11 @@ export class HeaderComponent implements OnInit {
   errCode$: Observable<Number | null>;
   errMes: String | null = localStorage.getItem('mes');
   ischeck$: Observable<Boolean>;
-  isCheckLogin: boolean = false;
-  isCheckLogout: boolean = false;
-  isCheckRegister: boolean = false;
-  isloading: boolean = false;
 
   errReg: Number = -1;
   errMessageReg: string = '';
+  role$: Observable<String | null>;
+
   constructor(
     private store: Store<AppStateInterface>,
     private router: Router,
@@ -48,23 +47,26 @@ export class HeaderComponent implements OnInit {
     this.errMes$ = this.store.pipe(select(mesSelector));
     this.errCode$ = this.store.pipe(select(errSelector));
     this.ischeck$ = this.store.pipe(select(isLoadingSelector));
+    this.role$ = this.store.pipe(select(roleSelector));
+  }
+
+  profile() {
+    this.router.navigate(['/me']);
   }
 
   ngOnInit(): void {}
+
   logout() {
-    this.isloading = false;
-    this.isCheckLogin = false;
-    this.isCheckLogout = true;
     this.store.dispatch(
       formAction.loginOut({ token: localStorage.getItem('token') })
     );
     localStorage.clear();
+    this.router.navigate(['']);
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
   openModal1(template1: TemplateRef<any>) {
-    this.isCheckRegister = false;
     this.modalRef = this.modalService.show(template1);
   }
   checkoutForm = this.formBuilder.group({
@@ -79,10 +81,6 @@ export class HeaderComponent implements OnInit {
   });
 
   onSubmitReg() {
-    setTimeout(() => {
-      this.isCheckRegister = true;
-    }, 5000);
-
     this.AuthAPIService.register(
       this.checkoutFormReg.value.email as string,
       this.checkoutFormReg.value.password as string,
@@ -100,12 +98,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isloading = true;
-    setTimeout(() => {
-      this.isCheckLogout = false;
-      this.isCheckLogin = true;
-    }, 5000);
-
     this.store.dispatch(
       formAction.loginRequest({
         email: this.checkoutForm.value.email as string,
@@ -117,11 +109,13 @@ export class HeaderComponent implements OnInit {
         if (x.login.errCode == 0) {
           localStorage.setItem('token', x.login.token as string);
           localStorage.setItem('name', x.login.name as string);
+          localStorage.setItem('role', x.login.role as string);
           localStorage.setItem('ischeck', 'true');
+          localStorage.setItem('coin', String(x.login.coin));
           setTimeout(() => {
             this.modalRef?.hide();
             this.checkoutForm.reset();
-          }, 4000);
+          }, 2000);
         } else {
           localStorage.setItem('mes', x.login.message as string);
         }

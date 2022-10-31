@@ -1,0 +1,38 @@
+<div class="cate_body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+        <th scope="col">Coin</th>
+        <th scope="col">Status</th>
+        <th scope="col">Create At</th>
+        <th scope="col">Update At</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userUn">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.role}}</td>
+        <td>{{item.coin}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.createdAt | date: 'dd/MM/yyyy'}}</td>
+        <td>{{item.updatedAt | date: 'dd/MM/yyyy'}}</td>
+        <td class="btn_list">
+          <button class="btn_list_task">Delete</button>
+          <button class="btn_list_task">Update</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <div class="pagin mt-5" style="padding: 0 20px;">
+    <pagination #refect class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="pages"
+      previousText=" &lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentpage"
+      (pageChanged)="pageChanged($event)">
+    </pagination>
+  </div>
+</div>

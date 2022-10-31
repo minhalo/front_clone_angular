@@ -1,0 +1,17 @@
+.cate_body {
+  padding: 10px 20px;
+  width: 100%;
+  overflow-x: scroll;
+  .btn_list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .btn_list_task {
+      border-radius: 5px 5px;
+      border: none;
+      background-color: #202124;
+      color: white;
+      padding: 10px 5px;
+    }
+  }
+}
