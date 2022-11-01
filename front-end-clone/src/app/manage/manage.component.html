@@ -1,3 +1,14 @@
+<div class="searching">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="form_login">
+    <input placeholder="&#61442; Search by name" class="input_search" formControlName="search" />
+    <button class="btn_searching">Search</button>
+  </form>
+  <div class="btn_searchings" (click)="openModal(template)">New</div>
+</div>
+<!-- <button>New</button> -->
+
+
+
 <div class="cate_body">
   <table class="table">
     <thead>
@@ -24,6 +35,7 @@
         <td class="btn_list">
           <button class="btn_list_task">Delete</button>
           <button class="btn_list_task">Update</button>
+          <button class="btn_list_task">Ban</button>
         </td>
       </tr>
 
@@ -36,3 +48,38 @@
     </pagination>
   </div>
 </div>
+
+
+<ng-template #template>
+  <div class="modal-body">
+    <form [formGroup]="createNewAcc" (ngSubmit)="onCreate()" class="form_login">
+      <div class="mb-3">
+        <h5>Email</h5>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+          aria-describedby="addon-wrapping" formControlName="email">
+        <small *ngIf="errReg === 1" class="text-danger">{{errMes}}</small>
+      </div>
+      <div class="mb-3">
+        <h5>Password</h5>
+        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+          aria-describedby="addon-wrapping" formControlName="password">
+        <small *ngIf="errReg === 2" class="text-danger">{{errMes}}</small>
+      </div>
+      <div class="mb-3">
+        <h5>Confirm Password</h5>
+        <input type="password" class="form-control" placeholder="CPassword" aria-label="CPassword"
+          aria-describedby="addon-wrapping" formControlName="cpassword">
+      </div>
+      <div class="mb-3">
+        <h5>Role</h5>
+        <select class="form-select" formControlName="role">
+          <option value="{{item.id}}" *ngFor="let item of role" selected>{{item.nameRole}}
+          </option>
+        </select>
+      </div>
+      <button class="btn btn-primary">Create</button>
+
+    </form>
+
+  </div>
+</ng-template>

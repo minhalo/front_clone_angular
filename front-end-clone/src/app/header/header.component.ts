@@ -31,6 +31,10 @@ export class HeaderComponent implements OnInit {
   errMes: String | null = localStorage.getItem('mes');
   ischeck$: Observable<Boolean>;
 
+  idchecklogin: boolean = false;
+  idchecklogout: boolean = false;
+  idcheckreg: boolean = false;
+
   errReg: Number = -1;
   errMessageReg: string = '';
   role$: Observable<String | null>;
@@ -57,6 +61,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   logout() {
+    this.idchecklogout = true;
+    setTimeout(() => {
+      this.idchecklogout = false;
+    }, 5000);
     this.store.dispatch(
       formAction.loginOut({ token: localStorage.getItem('token') })
     );
@@ -81,6 +89,10 @@ export class HeaderComponent implements OnInit {
   });
 
   onSubmitReg() {
+    this.idcheckreg = true;
+    setTimeout(() => {
+      this.idcheckreg = false;
+    }, 5000);
     this.AuthAPIService.register(
       this.checkoutFormReg.value.email as string,
       this.checkoutFormReg.value.password as string,
@@ -89,15 +101,18 @@ export class HeaderComponent implements OnInit {
       this.errReg = response.errCode;
       this.errMessageReg = response.message;
       if (response.errCode == 0) {
-        setTimeout(() => {
-          this.checkoutFormReg.reset();
-          this.modalRef?.hide();
-        }, 4000);
+        this.checkoutFormReg.reset();
+        this.modalRef?.hide();
       }
     });
   }
 
   onSubmit() {
+    this.idchecklogin = true;
+    setTimeout(() => {
+      this.idchecklogin = false;
+    }, 5000);
+
     this.store.dispatch(
       formAction.loginRequest({
         email: this.checkoutForm.value.email as string,
@@ -112,10 +127,8 @@ export class HeaderComponent implements OnInit {
           localStorage.setItem('role', x.login.role as string);
           localStorage.setItem('ischeck', 'true');
           localStorage.setItem('coin', String(x.login.coin));
-          setTimeout(() => {
-            this.modalRef?.hide();
-            this.checkoutForm.reset();
-          }, 2000);
+          this.modalRef?.hide();
+          this.checkoutForm.reset();
         } else {
           localStorage.setItem('mes', x.login.message as string);
         }

@@ -60,30 +60,30 @@
 //   }
 // }
 
-// .ele {
-//   animation: 4s fadeIn;
-//   animation-fill-mode: forwards;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   visibility: hidden;
-//   position: absolute;
-//   top: 5%;
-//   width: 100%;
-//   transition: ease-in-out;
-// }
+.ele {
+  animation: 4s fadeIn;
+  animation-fill-mode: forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  position: absolute;
+  top: 5%;
+  width: 100%;
+  transition: ease-in-out;
+}
 
-// @keyframes fadeIn {
-//   50% {
-//     visibility: hidden;
-//   }
-//   50% {
-//     visibility: visible;
-//   }
-//   95% {
-//     visibility: hidden;
-//   }
-// }
+@keyframes fadeIn {
+  50% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: visible;
+  }
+  95% {
+    visibility: hidden;
+  }
+}
 
 .main_header_container {
   height: 70px;
@@ -181,6 +181,9 @@
 @media only screen and (max-device-width: 600px) and (min-device-width: 351px) {
   .header_coin {
     display: none !important;
+  }
+  .header_search {
+    width: 40vw !important;
   }
 }
 

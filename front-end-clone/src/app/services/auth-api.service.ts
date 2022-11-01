@@ -7,6 +7,8 @@ import { page } from '../model/page';
 import { profile } from '../model/profile';
 import { user } from '../model/user';
 import { total } from '../model/total';
+import { role } from '../model/role';
+import { err } from '../model/err';
 
 @Injectable({
   providedIn: 'root',
@@ -94,5 +96,58 @@ export class AuthAPIService {
       `http://localhost:8081/api/user/page/searchAll`,
       requestOptions
     );
+  }
+
+  public pageVal(token: String | null, name: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.get<total>(
+      `http://localhost:8081/api/user/page/search/page?name=${name}`,
+      requestOptions
+    );
+  }
+
+  public getRole(token: String | null) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.get<role[]>(
+      `http://localhost:8081/api/getAllRole`,
+      requestOptions
+    );
+  }
+
+  public search(token: String | null, page: number, name: string) {
+    return this.http.post<user[]>(
+      `http://localhost:8081/api/user/page/search`,
+      {
+        name: name,
+        authorization: `${token} bearer`,
+        page: page,
+      }
+    );
+  }
+
+  public adminCreate(
+    token: String | null,
+    email: string,
+    password: string,
+    cpassword: string,
+    role: number
+  ) {
+    return this.http.post<err>(`http://localhost:8081/api/createNewUser`, {
+      email: email,
+      authorization: `${token} bearer`,
+      password: password,
+      cpassword: cpassword,
+      role: role,
+    });
   }
 }

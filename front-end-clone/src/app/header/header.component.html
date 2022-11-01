@@ -128,13 +128,9 @@
   >, have a nice day!
 </alert>
 
-<alert *ngIf="isCheckLogout" type="info" class="ele">
-  <strong>Good bye!</strong> see you soon.
-</alert>
 
-<alert *ngIf="isCheckRegister" type="info" class="ele">
-  <strong>Created Account Success!</strong>
-</alert> -->
+
+ -->
 
 <div class="main_header_container">
   <div class="header_left">
@@ -242,3 +238,17 @@
     </form>
   </div>
 </ng-template>
+
+
+<alert *ngIf="idchecklogin" type="success" class="ele">
+  <strong>Hi {{ name$ | async }}</strong>, have a nice day!
+</alert>
+
+<alert *ngIf="idchecklogout" type="warning" class="ele">
+  <strong>Good bye!</strong> see you soon.
+</alert>
+
+
+<alert *ngIf="idcheckreg" type="info" class="ele">
+  <strong>Created Account Success!</strong>
+</alert>

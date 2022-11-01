@@ -41,5 +41,6 @@ export const reducers = createReducer(
     status: -1,
     token: null,
     role: null,
+    coin: 0,
   }))
 );

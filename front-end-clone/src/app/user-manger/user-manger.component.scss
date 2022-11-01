@@ -1,17 +1,25 @@
 .cate_mange {
-  height: 60px;
+  height: 80px;
   background-color: #202124;
   color: white;
   padding: 5px 20px;
   display: flex;
   align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  gap: 1rem;
   .btn_manage {
     border-radius: 5px 5px;
     background-color: #343539;
     cursor: pointer;
+    width: 150px;
+    text-align: center;
     display: inline-block;
     padding: 5px 7px;
     transition: 1s;
+    // white-space: nowrap;
+    // overflow: hidden !important;
+    // text-overflow: ellipsis;
     &:hover {
       background-color: white;
       color: black;

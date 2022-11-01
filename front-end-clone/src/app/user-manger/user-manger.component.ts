@@ -7,6 +7,9 @@ import { AuthAPIService } from '../services/auth-api.service';
 })
 export class UserMangerComponent implements OnInit {
   constructor(private AuthAPIService: AuthAPIService) {}
-
+  num: number = 1;
   ngOnInit(): void {}
+  change(id: number) {
+    this.num = id;
+  }
 }

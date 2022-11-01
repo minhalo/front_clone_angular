@@ -31,13 +31,10 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((queryParams) => {
-      console.log(queryParams);
-    });
+    this.route.queryParams.subscribe((queryParams) => {});
 
     this.AuthAPIService.profile(localStorage.getItem('token')).subscribe(
       (response: profile) => {
-        console.log(response);
         this.name = response.name;
         this.age = response.age;
         this.image = response.image;
@@ -47,7 +44,5 @@ export class UserComponent implements OnInit {
         this.coin = response.coin;
       }
     );
-
-    console.log(this.address);
   }
 }
