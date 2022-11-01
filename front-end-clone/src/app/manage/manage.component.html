@@ -33,9 +33,20 @@
         <td>{{item.createdAt | date: 'dd/MM/yyyy'}}</td>
         <td>{{item.updatedAt | date: 'dd/MM/yyyy'}}</td>
         <td class="btn_list">
-          <button class="btn_list_task">Delete</button>
+          <button class="btn_list_task" (click)="deleteUser(deletet)">Delete</button>
+          <ng-template #deletet>
+            <div class="modal-body">
+              <div class="mb-3">
+                Are you sure? Delete account can not back up data again. Make sure you want to delete this account
+              </div>
+
+              <button (click)="deleteUsers(item.id)" class="btn btn-primary">Delete</button>
+
+            </div>
+          </ng-template>
           <button class="btn_list_task">Update</button>
-          <button class="btn_list_task">Ban</button>
+          <button *ngIf="item.status" (click)="banUsers(item.id)" class="btn_list_task">Ban</button>
+          <button *ngIf="!item.status" (click)="banUsers(item.id)" class="btn_list_task">Unban</button>
         </td>
       </tr>
 

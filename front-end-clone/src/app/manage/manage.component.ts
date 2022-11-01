@@ -32,6 +32,10 @@ export class ManageComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  deleteUser(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
   ngOnInit(): void {
     this.AuthAPIService.userManage(
       localStorage.getItem('token'),
@@ -63,7 +67,6 @@ export class ManageComponent implements OnInit {
   });
 
   onCreate() {
-    console.log(this.createNewAcc.value);
     this.AuthAPIService.adminCreate(
       localStorage.getItem('token'),
       this.createNewAcc.value.email as string,
@@ -88,6 +91,45 @@ export class ManageComponent implements OnInit {
         this.pages = response.Total;
       });
     }
+  }
+
+  deleteUsers(id: number) {
+    this.AuthAPIService.deleteUser(localStorage.getItem('token'), id).subscribe(
+      (response) => {
+        this.modalRef?.hide();
+        this.AuthAPIService.userManage(
+          localStorage.getItem('token'),
+          this.page
+        ).subscribe((response) => {
+          this.userUn = response;
+        });
+
+        this.AuthAPIService.userManagePage(
+          localStorage.getItem('token')
+        ).subscribe((response) => {
+          this.pages = response.Total;
+        });
+      }
+    );
+  }
+
+  banUsers(id: number) {
+    this.AuthAPIService.banUser(localStorage.getItem('token'), id).subscribe(
+      (response) => {
+        this.AuthAPIService.userManage(
+          localStorage.getItem('token'),
+          this.page
+        ).subscribe((response) => {
+          this.userUn = response;
+        });
+
+        this.AuthAPIService.userManagePage(
+          localStorage.getItem('token')
+        ).subscribe((response) => {
+          this.pages = response.Total;
+        });
+      }
+    );
   }
 
   pageChanged(event: PageChangedEvent): void {

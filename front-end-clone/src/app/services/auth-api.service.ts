@@ -150,4 +150,18 @@ export class AuthAPIService {
       role: role,
     });
   }
+
+  public banUser(token: String | null, id: number) {
+    return this.http.patch<err>(`http://localhost:8081/api/banUser`, {
+      authorization: `${token} bearer`,
+      id: id,
+    });
+  }
+
+  public deleteUser(token: String | null, id: number) {
+    return this.http.patch<err>(`http://localhost:8081/api/deleteUser`, {
+      authorization: `${token} bearer`,
+      id: id,
+    });
+  }
 }
