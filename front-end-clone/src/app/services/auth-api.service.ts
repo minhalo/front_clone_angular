@@ -159,9 +159,14 @@ export class AuthAPIService {
   }
 
   public deleteUser(token: String | null, id: number) {
-    return this.http.patch<err>(`http://localhost:8081/api/deleteUser`, {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
       authorization: `${token} bearer`,
-      id: id,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.delete(`http://localhost:8081/api/deleteUser?id=${id}`, {
+      headers: headers,
     });
   }
 }

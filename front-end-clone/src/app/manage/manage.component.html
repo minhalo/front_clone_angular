@@ -44,7 +44,13 @@
 
             </div>
           </ng-template>
-          <button class="btn_list_task">Update</button>
+          <button class="btn_list_task" (click)="updateUser(updated)">Update</button>
+          <ng-template #updated>
+            <div class="modal-body">
+              heelo
+
+            </div>
+          </ng-template>
           <button *ngIf="item.status" (click)="banUsers(item.id)" class="btn_list_task">Ban</button>
           <button *ngIf="!item.status" (click)="banUsers(item.id)" class="btn_list_task">Unban</button>
         </td>

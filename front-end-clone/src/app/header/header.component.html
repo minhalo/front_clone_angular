@@ -139,7 +139,7 @@
       <i class="bi bi-search header_icon_search"></i>
       <input class="header_input" type="text" placeholder="Search" />
     </div>
-    <div *ngIf="(token$|async)" class="header_coin">Coin: {{ coin | number: ".2" }}</div>
+    <div *ngIf="(token$|async)" class="header_coin">Coin: {{ (coin$|async) | number: ".2"}}</div>
   </div>
   <div class="header_right">
     <div *ngIf="!(token$|async)" class="text_header_right" (click)="openModal1(template)">Sign in</div>

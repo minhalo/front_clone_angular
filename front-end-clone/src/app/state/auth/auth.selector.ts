@@ -31,3 +31,8 @@ export const roleSelector = createSelector(
   selectFeature,
   (state) => state.role
 );
+
+export const coinSelector = createSelector(
+  selectFeature,
+  (state) => state.coin as number
+);
