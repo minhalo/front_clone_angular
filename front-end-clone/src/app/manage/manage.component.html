@@ -44,13 +44,68 @@
 
             </div>
           </ng-template>
-          <button class="btn_list_task" (click)="updateUser(updated)">Update</button>
+          <button class="btn_list_task" (click)="updateUser(updated, item.id)">Update</button>
           <ng-template #updated>
             <div class="modal-body">
-              heelo
+
+              <form [formGroup]="updatedAcc" (ngSubmit)="onUpdate(item.id)" class="form_login">
+                <div class="mb-3">
+                  <h5>Name</h5>
+                  <input type="text" class="form-control" placeholder="Name" aria-label="Name"
+                    aria-describedby="addon-wrapping" formControlName="name">
+                  <small *ngIf="errReg === 1" class="text-danger">{{errMes}}</small>
+                </div>
+
+
+                <div class="mb-3">
+                  <h5>Age</h5>
+                  <input type="text" class="form-control" placeholder="Age" aria-label="Age"
+                    aria-describedby="addon-wrapping" formControlName="age">
+                  <small *ngIf="errReg === 3" class="text-danger">{{errMes}}</small>
+                </div>
+                <div class="mb-3">
+                  <h5>Gmail</h5>
+                  <input type="text" class="form-control" placeholder="Gmail" aria-label="Gmail"
+                    aria-describedby="addon-wrapping" formControlName="gmail">
+                  <small *ngIf="errReg === 4" class="text-danger">{{errMes}}</small>
+                </div>
+                <div class="mb-3">
+                  <h5>Coin</h5>
+                  <input type="text" class="form-control" placeholder="Coin" aria-label="Coin"
+                    aria-describedby="addon-wrapping" formControlName="coin">
+                  <small *ngIf="errReg === 5" class="text-danger">{{errMes}}</small>
+                </div>
+                <div class="mb-3">
+                  <h5>Gender</h5>
+                  <select class="form-select" formControlName="gender">
+                    <option value="{{item.id}}" *ngFor="let item of gender" selected>{{item.name}}
+                    </option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <h5>Address</h5>
+                  <select class="form-select" formControlName="gender">
+                    <option value="{{item.id}}" *ngFor="let item of address" selected>{{item.name}}
+                    </option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <h5>Role</h5>
+                  <select class="form-select" formControlName="rolem">
+                    <option value="{{item.id}}" *ngFor="let item of role" selected>{{item.nameRole}}
+                    </option>
+                  </select>
+
+                </div>
+
+                <button class="btn btn-primary">Update</button>
+
+              </form>
+
 
             </div>
           </ng-template>
+
           <button *ngIf="item.status" (click)="banUsers(item.id)" class="btn_list_task">Ban</button>
           <button *ngIf="!item.status" (click)="banUsers(item.id)" class="btn_list_task">Unban</button>
         </td>

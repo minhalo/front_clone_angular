@@ -1,3 +1,4 @@
+import { genders } from './../model/gender';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AuthAPIService } from '../services/auth-api.service';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
@@ -20,6 +21,9 @@ export class ManageComponent implements OnInit {
   pages: number = 1;
   modalRef?: BsModalRef;
   role: role[] = [];
+  gender: genders[] = [];
+  address: genders[] = [];
+
   errReg: number = -1;
   errMes: string = '';
   constructor(
@@ -36,8 +40,22 @@ export class ManageComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUser(template: TemplateRef<any>) {
+  updateUser(template: TemplateRef<any>, id: number) {
     this.modalRef = this.modalService.show(template);
+    this.AuthAPIService.getUpdateUser(
+      localStorage.getItem('token'),
+      id
+    ).subscribe((response) => {
+      this.updatedAcc.reset({
+        name: response.name,
+        address: `${response.AddressId}`,
+        gender: `${response.GenderId}`,
+        age: `${!response.age ? '' : response.age}`,
+        gmail: response.gmail,
+        rolem: `${response.RoleId}`,
+        coin: `${response.coin}`,
+      });
+    });
   }
 
   ngOnInit(): void {
@@ -53,12 +71,62 @@ export class ManageComponent implements OnInit {
         this.role = response;
       }
     );
+    this.AuthAPIService.getGender().subscribe((response) => {
+      this.gender = response;
+    });
+
+    this.AuthAPIService.getAddress().subscribe((response) => {
+      this.address = response;
+    });
     this.AuthAPIService.userManagePage(localStorage.getItem('token')).subscribe(
       (response) => {
         this.pages = response.Total;
       }
     );
   }
+
+  updatedAcc = this.formBuilder.group({
+    name: '',
+    address: '1',
+    gender: '1',
+    age: '',
+    gmail: '',
+    rolem: '1',
+    coin: '0',
+  });
+
+  onUpdate(id: number) {
+    this.AuthAPIService.updateUser(
+      localStorage.getItem('token'),
+      this.updatedAcc.value.name as string,
+      this.updatedAcc.value.address as string,
+      Number(this.updatedAcc.value.age),
+      this.updatedAcc.value.gmail as string,
+      Number(this.updatedAcc.value.rolem),
+      id,
+      Number(this.updatedAcc.value.gender),
+      Number(this.updatedAcc.value.coin)
+    ).subscribe((response) => {
+      (this.errReg = response.errCode), (this.errMes = response.errMessage);
+      if (response.errCode == 0) {
+        if (this.errReg === 0) {
+          this.modalRef?.hide();
+          this.AuthAPIService.userManage(
+            localStorage.getItem('token'),
+            this.page
+          ).subscribe((response) => {
+            this.userUn = response;
+          });
+          this.AuthAPIService.userManagePage(
+            localStorage.getItem('token')
+          ).subscribe((response) => {
+            this.pages = response.Total;
+          });
+        }
+      }
+    });
+  }
+
   checkoutForm = this.formBuilder.group({
     search: '',
   });
@@ -79,22 +147,29 @@ export class ManageComponent implements OnInit {
       Number(this.createNewAcc.value.role)
     ).subscribe((response) => {
       (this.errReg = response.errCode), (this.errMes = response.message);
+      if (response.errCode == 0) {
+        this.createNewAcc.reset({
+          email: '',
+          password: '',
+          cpassword: '',
+          role: '1',
+        });
+        if (this.errReg === 0) {
+          this.modalRef?.hide();
+          this.AuthAPIService.userManage(
+            localStorage.getItem('token'),
+            this.page
+          ).subscribe((response) => {
+            this.userUn = response;
+          });
+          this.AuthAPIService.userManagePage(
+            localStorage.getItem('token')
+          ).subscribe((response) => {
+            this.pages = response.Total;
+          });
+        }
+      }
     });
-
-    if (this.errReg === 0) {
-      this.modalRef?.hide();
-      this.AuthAPIService.userManage(
-        localStorage.getItem('token'),
-        this.page
-      ).subscribe((response) => {
-        this.userUn = response;
-      });
-      this.AuthAPIService.userManagePage(
-        localStorage.getItem('token')
-      ).subscribe((response) => {
-        this.pages = response.Total;
-      });
-    }
   }
 
   deleteUsers(id: number) {
