@@ -3,6 +3,7 @@ import {
   mesSelector,
   roleSelector,
   isLoadingSelector,
+  coinSelector,
 } from './../state/auth/auth.selector';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { select, Store } from '@ngrx/store';
@@ -38,6 +39,7 @@ export class HeaderComponent implements OnInit {
   errReg: Number = -1;
   errMessageReg: string = '';
   role$: Observable<String | null>;
+  coin$: Observable<number>;
 
   constructor(
     private store: Store<AppStateInterface>,
@@ -52,6 +54,7 @@ export class HeaderComponent implements OnInit {
     this.errCode$ = this.store.pipe(select(errSelector));
     this.ischeck$ = this.store.pipe(select(isLoadingSelector));
     this.role$ = this.store.pipe(select(roleSelector));
+    this.coin$ = this.store.pipe(select(coinSelector));
   }
 
   profile() {

@@ -1,5 +1,5 @@
 .cate_mange {
-  height: 80px;
+  height: 60px;
   background-color: #202124;
   color: white;
   padding: 5px 20px;
@@ -9,20 +9,19 @@
   overflow-y: hidden;
   gap: 1rem;
   .btn_manage {
-    border-radius: 5px 5px;
-    background-color: #343539;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     width: 150px;
     text-align: center;
     display: inline-block;
-    padding: 5px 7px;
+    padding: 0px 8px;
     transition: 1s;
-    // white-space: nowrap;
-    // overflow: hidden !important;
-    // text-overflow: ellipsis;
+    border-right: 1px solid #66696f;
+
     &:hover {
-      background-color: white;
-      color: black;
+      color: lightblue;
     }
   }
 }

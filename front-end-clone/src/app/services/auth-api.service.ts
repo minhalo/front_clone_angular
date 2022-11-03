@@ -8,7 +8,9 @@ import { profile } from '../model/profile';
 import { user } from '../model/user';
 import { total } from '../model/total';
 import { role } from '../model/role';
-import { err } from '../model/err';
+import { err, errCcc } from '../model/err';
+import { genders } from '../model/gender';
+import { userUpdate } from '../model/updateUser';
 
 @Injectable({
   providedIn: 'root',
@@ -148,6 +150,97 @@ export class AuthAPIService {
       password: password,
       cpassword: cpassword,
       role: role,
+    });
+  }
+
+  public banUser(token: String | null, id: number) {
+    return this.http.patch<err>(`http://localhost:8081/api/banUser`, {
+      authorization: `${token} bearer`,
+      id: id,
+    });
+  }
+
+  public getUpdateUser(token: String | null, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.post<userUpdate>(
+      `http://localhost:8081/api/getUpdateUser?id=${id}`,
+      {
+        authorization: `${token} bearer`,
+      }
+    );
+  }
+
+  public searchRoles(token: String | null, name: string) {
+    return this.http.post<role[]>(`http://localhost:8081/api/searchRole`, {
+      authorization: `${token} bearer`,
+      name: name,
+    });
+  }
+
+  public createRoles(token: String | null, name: string) {
+    return this.http.post<errCcc>(`http://localhost:8081/api/createRole`, {
+      authorization: `${token} bearer`,
+      name: name,
+    });
+  }
+
+  public deleteRole(token: String | null, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    return this.http.delete(`http://localhost:8081/api/deleteRole?id=${id}`, {
+      headers: headers,
+    });
+  }
+
+  public deleteUser(token: String | null, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.delete(`http://localhost:8081/api/deleteUser?id=${id}`, {
+      headers: headers,
+    });
+  }
+
+  public getGender() {
+    return this.http.get<genders[]>(`http://localhost:8081/api/getGender`);
+  }
+
+  public getAddress() {
+    return this.http.get<genders[]>(`http://localhost:8081/api/getAddress`);
+  }
+
+  public updateUser(
+    token: String | null,
+    name: string,
+    address: string,
+    age: number,
+    gmail: string,
+    role: number,
+    id: number,
+    gender: number,
+    coin: number
+  ) {
+    return this.http.put<errCcc>(`http://localhost:8081/api/updateUser`, {
+      name: name,
+      address: address,
+      gender: gender,
+      age: age,
+      gmail: gmail,
+      id: id,
+      role: role,
+      authorization: `${token} bearer`,
+      coin: coin,
     });
   }
 }
