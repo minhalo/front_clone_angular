@@ -1,0 +1,682 @@
+$highlightColour: #54EBC9;
+$textOnHighlightColour: white;
+$bodyBackgroundColour: #FAFAFA;
+$mainTextColour: #555;
+$fadedTextColour: #BBB;
+$borderColour: #DDD;
+$lightBorderColour: white;
+$menuBackgroundColour: white;
+$mainFont: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+$specialFont: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+$heroHeight: 20em;
+  
+$mdMinWidth: 992px;
+
+// change container width
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1040px;
+    }
+}
+
+@mixin disable-selection {
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
+@mixin pushdown {
+  @media (min-width: $mdMinWidth) {
+    margin-top: 0.15 * $heroHeight;
+  }
+}
+
+// end general vars etc.
+
+body {
+  padding-top: 50px;
+  font-family: $mainFont;
+  color: $mainTextColour;
+  background-color: $bodyBackgroundColour;
+}
+
+// start navbar
+    
+.navbar-fixed-top {
+  background-color: $highlightColour;
+  color: $textOnHighlightColour;
+  border: 0;
+  
+  @media (min-width: $mdMinWidth) {
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+}
+
+@mixin navbar-links {
+  color: inherit;
+  text-decoration: none;
+}
+
+// navbar title
+.navbar-default .navbar-brand {
+  @include navbar-links;
+  font-size: 2em;
+  // padding-left: 0;
+}
+
+// navbar links
+.navbar-default .navbar-nav>li>a {
+  @include navbar-links;
+  font-size: 1.25em;
+}
+
+// end navbar
+
+
+// start hero unit
+
+.intro-hero {
+  // background-color: black;
+  background: url(https://static.pexels.com/photos/1826/wood-nature-sunny-forest.jpg) no-repeat center center fixed;
+  background: url(https://static.pexels.com/photos/1826/wood-nature-sunny-forest.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  @media (min-width: $mdMinWidth) {
+    height: $heroHeight;
+  }
+  
+  color: $textOnHighlightColour;
+  text-shadow: 1px 1px 0 black;
+  
+  a {
+    color: $highlightColour;
+    text-decoration: underline;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  
+  .blurb-row {
+    @media (min-width: $mdMinWidth) {
+      height: $heroHeight * 0.8;
+      padding-top: $heroHeight * 0.2;
+    }
+    
+    @media (max-width: $mdMinWidth) {
+      text-align: center;
+      padding-top: 1em;
+      padding-bottom: 2em;
+    }
+    
+    div[class^="col-md-"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    // changing the line height fucks with responsiveness/multiple divs
+    // line-height: $heroHeight * 0.7;
+    
+    .blurb-title {
+      font-size: 2em;
+    }
+    
+    .cta-button {
+      // @TODO fix me to be centered
+      padding: 1em;
+      border-radius: 1em;
+      border: 0;
+      background: rgba(255, 255, 255, 0.6);
+      color: $textOnHighlightColour;
+      text-decoration: none;
+      font-size: 1.1em;
+      
+      @media (min-width: $mdMinWidth) {
+        float: right!important;
+      }
+    }
+  }
+  
+  .searchbar-row {    
+    @media (min-width: $mdMinWidth) {
+      height: $heroHeight * 0.2;
+    }
+    
+    text-align: right;
+    
+    .search-input {
+      border-radius: 20em;
+      border-color: $textOnHighlightColour;
+      background: rgba(255, 255, 255, 0.5);
+      color: $mainTextColour;
+    }
+    .glyphicon {
+      color: $textOnHighlightColour;
+    }
+  }
+}
+
+// end of navbar/hero unit (common styles)
+
+.categories-sidebar {
+  @include pushdown;
+  border: 1px solid $borderColour;
+  background-color: $menuBackgroundColour;
+  
+  hr {
+    border-top: 1px solid $highlightColour;
+    opacity: 0.2;
+  }
+
+  .checkbox {
+    @include disable-selection;
+    
+    @media (max-width: $mdMinWidth) {
+      font-size: 1.2em;
+    }
+  }
+  
+  button.reset-filter {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    background-color: $highlightColour;
+    color: $textOnHighlightColour;
+    padding: 0.8em 1.1em;
+    font-size: 0.9em;
+
+    &:focus {
+      outline: 0 none;
+      color: $textOnHighlightColour;
+    }
+
+    &:hover {
+      color: $textOnHighlightColour;
+    }
+  }
+}
+
+.products-container {
+  @include pushdown;
+  padding: 15px;
+  border: 1px solid $borderColour;
+  background-color: $menuBackgroundColour;
+  
+  @media (min-width: $mdMinWidth) {
+    &.col-md-offset-1 {
+      margin-left: 2%;
+    }
+    
+    &.col-md-11 {
+      width: 98%;
+    }
+  }
+  
+  .product-box {
+    position: relative;
+    border: 1px solid $borderColour;
+    margin-bottom: 1em;
+    // border-top-right-radius: 2em;
+    display: table;
+    width: 100%;
+    overflow: hidden;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:before {
+     content: "";
+     position: absolute;
+     top: 0;
+     right: 0;
+     border-width: 1.5em 0 0 1.5em;
+     border-style: solid;
+     border-color: $borderColour $borderColour #fff #fff;
+    }
+    
+    .product-image {
+      width: 35%;
+      display: table-cell;
+      background-size: cover;
+      background-position: center;
+      
+      // this is a temp fix... change
+      // @media (max-width: $mdMinWidth) {
+      //   background-size: contain;
+      //   background-repeat: no-repeat;
+      // }
+    }
+    
+    .product-details {
+      display: table-cell;
+      padding-top: 0.5em;
+      
+      .product-name {
+        font-size: 140%;
+        font-family: $specialFont;
+        display: inline-block;
+        padding-top: 0.2em;
+      }
+
+      .product-status {
+        font-size: 80%;
+        color: $fadedTextColour;
+
+      }
+
+      .product-type {
+        // text-align: right;
+        padding-right: 4em;
+        text-transform: uppercase;
+        font-size: 0.7em;
+        color: $fadedTextColour;
+      }
+      
+      .product-description {
+        font-size: 80%;
+        line-height: 1.7em;
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      
+      // need to align this to the bottom
+      .product-price {
+        // @TODO: first 3 lines here need to review?
+        // position: absolute;
+        // bottom: 0;
+        // right: 0;
+        color: $highlightColour;
+        // text-align: right;
+        font-size: 1.3em;
+        font-family: $specialFont;
+        padding-right: 2em;
+        
+        @media (min-width: $mdMinWidth) {
+          padding-top: 2em;
+        }
+        
+        .full-dollar {
+          font-size: 2.2em;
+        }
+      }
+      
+      .product-progress-row {
+        background-color: $bodyBackgroundColour;
+        border-top: 1px solid $lightBorderColour;
+        padding-top: 1em;
+        
+        .progress {
+          height: 0.4em;
+          margin-bottom: 0.4em;
+          .progress-bar {
+            background-color: $highlightColour;
+          }
+        }
+        
+        .progress-text-row {
+          font-size: 0.8em;
+          padding-bottom: 0.8em;
+
+          span.quantity {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 0.2em;
+            color: black;
+          }
+          
+          // div:last-child {
+          //   @media (max-width: $mdMinWidth) {
+          //     border-left: 1px solid $borderColour;
+          //   }
+          // }
+        }
+      }
+    }
+    .product-type-icon {
+      position: absolute;
+      margin-right: -0.1em;
+      margin-bottom: -0.2em;
+      bottom: 0;
+      right: 0;
+      font-size: 3.5em;
+      color: $borderColour;
+      
+      @media (max-width: $mdMinWidth) {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+// end of market style
+
+.post-order-selection-row-container {
+  border-bottom: 1px solid $borderColour;
+  padding-top: 1.5em;
+  font-size: 1.2em;
+  background-color: $menuBackgroundColour;
+  
+  .selected-order {
+    border-bottom: 3px solid $highlightColour;
+  }
+}
+
+.filter-container {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: $menuBackgroundColour;
+  box-shadow: 0px 2px 2px 0px $borderColour;
+}
+
+.posts-container {
+  margin-top: 2em;
+}
+
+.post-summary-box {
+  $demoPostColour: rgb(150,150,255);
+  $postListingHeight: 80;
+  
+  border: 1px solid $borderColour;
+  
+  display: table;
+  width: 100%;
+  
+  .score-box {
+    background-color: $demoPostColour;
+    text-align: center;
+    font-size: 1.4em;
+    
+    display: table-cell;
+    vertical-align: middle;
+    
+    width: 10%;
+    min-width: 100px;
+    min-height: $postListingHeight + px;
+  }
+
+  .post-details {
+    display: table-cell;
+    
+    .post-top {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      padding-left: 15px;
+      padding-right: 15px;
+      
+      // white-space: nowrap;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+      
+      min-height: ($postListingHeight * 0.7) + px;
+      
+      span {
+        height: 100%;
+        vertical-align: middle;
+      }
+      
+      .post-name {
+        font-family: $specialFont;
+        font-size: 1.5em;
+        margin-right: 1em;
+        
+        @media (max-width: $mdMinWidth) {
+          display: block;
+          font-size: 1em;
+        }
+      }
+      
+      .user-name {
+        font-size: 0.8em;
+        color: $fadedTextColour;
+      }
+    }
+
+    .post-bottom {
+      background-color: $lightBorderColour;
+      border-top: 1px solid $borderColour;
+      padding-top: 0.25em;
+      padding-bottom: 0.25em;
+      padding-left: 15px;
+      font-size: 0.8em;
+      width: 100%;
+      overflow: hidden;
+      
+      min-height: ($postListingHeight * 0.3) + px;
+      
+      span {
+        height: 100%;
+        vertical-align: center;
+      }
+      
+      .product-type {
+        color: $demoPostColour;
+        text-transform: uppercase;
+        
+        i {
+          padding-right: 0.5em;
+        }
+      }
+      
+      div.right {
+        display: inline;
+        float: right;
+        padding-right: 1em;
+      }
+      
+      .time-ago {
+        padding-right: 1em;
+      }
+      
+      .comment-count {
+        i {
+          color: $highlightColour;
+        }
+      }
+    }
+  }
+}
+
+// end forum
+
+// start product detail
+$bonusTextBackground: lemonchiffon;
+
+.product-detail-container {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+
+  }
+  
+  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+   padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .product-top-box {
+    // border: 1px solid $borderColour;
+    background-color: $menuBackgroundColour;
+    // padding-right: 25px;
+    
+    .product-image {
+    //   height: 358px;
+      padding: 0;
+    //   border-radius: 5%;
+    }
+    
+    .product-intro-top {
+      padding: 20px;
+      
+      .product-name {
+        font-size: 1.8em;
+        font-family: $specialFont;
+      }
+      
+      .product-status {
+        font-size: 0.8em;
+        
+        em {
+          font-weight: bold;
+          font-style: normal;
+        }
+      }
+      
+      .product-genre {
+        padding-top: 15px;
+        padding-bottom: 25px;
+        font-size: 0.8em;
+        line-height: 1.5em;
+      }
+      
+      .progress-circle {
+        width: 80px;
+        height: 80px;
+        padding: 20px 5px;
+        text-align: center;
+        border: 1px solid $borderColour;
+        border-radius: 50%;
+        font-size: 0.6em;
+        margin: 0 auto;
+        
+        .number {
+          font-size: 2em;
+        }
+      }
+    }
+    
+    .product-intro-bottom {
+      background-color: $lightBorderColour;
+      // margin-right: -25px;
+      // margin-left: -30px;
+      padding-left: 25px;
+      padding-right: 25px;
+      border-top: 1px solid $borderColour;
+      padding-top: 15px;
+      padding-bottom: 5px;
+      
+      .price-current {
+        font-size: 1.8em;
+        font-family: $specialFont;
+        color: black;
+        vertical-align: middle;
+      }
+      
+      .price-original {
+        font-size: 1.1em;
+        font-family: $specialFont;
+        text-decoration: line-through;
+        color: $fadedTextColour;
+        vertical-align: middle;
+      }
+      
+      button.order-now {
+        background-color: $highlightColour;
+        color: $textOnHighlightColour;
+        font-size: 1.3em;
+        padding: 10px 20px;
+        border-radius: 0.8em;
+        width: 100%;
+      }
+      
+      .tip {
+        padding-top: 10px;
+        font-size: 0.6em;
+        color: $fadedTextColour;
+      }
+    }
+    
+    .bonus-text {
+      background-color: $bonusTextBackground;
+      color: darken($bonusTextBackground, 50%);
+      // margin-right: -25px;
+      // margin-left: -30px;
+      // padding-left: 30px;
+      // padding-right: 25px;
+      font-size: 0.8em;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+  }
+}
+
+.product-bottom-box {
+//   border: 1px solid $borderColour;
+  background-color: $menuBackgroundColour;
+  
+  .product-description {
+    padding: 0px 20px 50px 150px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+}
+.a{
+    width: 100%;
+    margin: 0;
+    .b{
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+// Comment
+body {
+	background-color: #f7f6f6;
+}
+.card {
+	border: none;
+	box-shadow: 5px 6px 6px 2px #e9ecef;
+	border-radius: 4px;
+}
+.dots {
+	height: 4px;
+	width: 4px;
+	margin-bottom: 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+}
+.badge {
+	padding: 7px;
+	padding-right: 9px;
+	padding-left: 16px;
+	box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+.user-img {
+	margin-top: 4px;
+}
+.check-icon {
+	font-size: 17px;
+	color: #c3bfbf;
+	top: 1px;
+	position: relative;
+	margin-left: 3px;
+}
+
+.icons {
+	i {
+		margin-left: 8px;
+	}
+}
+.reply {
+	margin-left: 12px;
+	small {
+		color: #b7b4b4;
+		&:hover {
+			color: green;
+			cursor: pointer;
+		}
+	}
+}
