@@ -182,8 +182,37 @@ export class AuthAPIService {
     });
   }
 
+  public searchGenders(name: string) {
+    return this.http.post<genders[]>(`http://localhost:8081/api/searchGender`, {
+      name: name,
+    });
+  }
+
+  public searchAddress(name: string) {
+    return this.http.post<genders[]>(
+      `http://localhost:8081/api/searchAddress`,
+      {
+        name: name,
+      }
+    );
+  }
+
   public createRoles(token: String | null, name: string) {
     return this.http.post<errCcc>(`http://localhost:8081/api/createRole`, {
+      authorization: `${token} bearer`,
+      name: name,
+    });
+  }
+
+  public createAddressed(token: String | null, name: string) {
+    return this.http.post<errCcc>(`http://localhost:8081/api/createAddress`, {
+      authorization: `${token} bearer`,
+      name: name,
+    });
+  }
+
+  public createGendersr(token: String | null, name: string) {
+    return this.http.post<errCcc>(`http://localhost:8081/api/createGender`, {
       authorization: `${token} bearer`,
       name: name,
     });
@@ -196,6 +225,17 @@ export class AuthAPIService {
     });
 
     return this.http.delete(`http://localhost:8081/api/deleteRole?id=${id}`, {
+      headers: headers,
+    });
+  }
+
+  public deleteGender(token: String | null, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    return this.http.delete(`http://localhost:8081/api/deleteGender?id=${id}`, {
       headers: headers,
     });
   }
@@ -223,7 +263,7 @@ export class AuthAPIService {
   public updateUser(
     token: String | null,
     name: string,
-    address: string,
+    address: number,
     age: number,
     gmail: string,
     role: number,

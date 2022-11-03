@@ -76,6 +76,7 @@ export class ManageComponent implements OnInit {
 
     this.AuthAPIService.getAddress().subscribe((response) => {
       this.address = response;
+      console.log(response);
     });
     this.AuthAPIService.userManagePage(localStorage.getItem('token')).subscribe(
       (response) => {
@@ -98,7 +99,7 @@ export class ManageComponent implements OnInit {
     this.AuthAPIService.updateUser(
       localStorage.getItem('token'),
       this.updatedAcc.value.name as string,
-      this.updatedAcc.value.address as string,
+      Number(this.updatedAcc.value.address),
       Number(this.updatedAcc.value.age),
       this.updatedAcc.value.gmail as string,
       Number(this.updatedAcc.value.rolem),
