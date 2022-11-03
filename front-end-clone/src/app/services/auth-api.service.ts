@@ -175,6 +175,31 @@ export class AuthAPIService {
     );
   }
 
+  public searchRoles(token: String | null, name: string) {
+    return this.http.post<role[]>(`http://localhost:8081/api/searchRole`, {
+      authorization: `${token} bearer`,
+      name: name,
+    });
+  }
+
+  public createRoles(token: String | null, name: string) {
+    return this.http.post<errCcc>(`http://localhost:8081/api/createRole`, {
+      authorization: `${token} bearer`,
+      name: name,
+    });
+  }
+
+  public deleteRole(token: String | null, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    return this.http.delete(`http://localhost:8081/api/deleteRole?id=${id}`, {
+      headers: headers,
+    });
+  }
+
   public deleteUser(token: String | null, id: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',

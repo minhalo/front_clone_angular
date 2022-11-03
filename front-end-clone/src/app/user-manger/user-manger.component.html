@@ -1,16 +1,10 @@
 <app-header></app-header>
 <div class="cate_mange">
-  <div (click)="change(1)" class="btn_manage">User</div>
+  <div routerLink="/manage/" class="btn_manage">User</div>
   <div (click)="change(2)" class="btn_manage">Product</div>
-  <div (click)="change(3)" class="btn_manage">Gender</div>
-  <div (click)="change(4)" class="btn_manage">Role</div>
-  <div (click)="change(5)" class="btn_manage">Address</div>
+  <div routerLink="/manage/other" class="btn_manage">Other</div>
 </div>
 
-<app-manage *ngIf="num === 1"></app-manage>
-<div *ngIf="num === 2">fuck1</div>
-<div *ngIf="num === 3">fuck2</div>
-<div *ngIf="num === 4">fuck3</div>
-<div *ngIf="num === 5">fuck4</div>
+<router-outlet></router-outlet>
 
 <app-footer></app-footer>

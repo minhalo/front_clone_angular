@@ -7,7 +7,6 @@ import { FormBuilder } from '@angular/forms';
 import { user } from '../model/user';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { role } from '../model/role';
-import { err } from '../model/err';
 
 @Component({
   selector: 'app-manage',
