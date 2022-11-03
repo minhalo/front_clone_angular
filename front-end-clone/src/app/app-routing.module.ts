@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 import { LoginComponent } from './login/login.component';
 import { ManageComponent } from './manage/manage.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'product/:id', component: DetailProductComponent },
 ];
 
 @NgModule({
