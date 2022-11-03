@@ -31,6 +31,10 @@ export class OtherComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  updateRole(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
   ngOnInit(): void {
     this.AuthAPIService.getRole(localStorage.getItem('token')).subscribe(
       (response) => {
@@ -52,6 +56,12 @@ export class OtherComponent implements OnInit {
   createNewRoles = this.formBuilder.group({
     name: '',
   });
+
+  updateRoles = this.formBuilder.group({
+    name: '',
+  });
+
+  onUpdateRoles(id: number) {}
 
   onCreateRoles() {
     this.AuthAPIService.createRoles(

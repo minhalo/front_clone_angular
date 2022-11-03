@@ -16,12 +16,12 @@ const routes: Routes = [
     component: UserMangerComponent,
     children: [
       {
-        path: '', // child route path
-        component: ManageComponent, // child route component that the router renders
+        path: '',
+        component: ManageComponent,
       },
       {
-        path: 'other', // child route path
-        component: OtherComponent, // child route component that the router renders
+        path: 'other',
+        component: OtherComponent,
       },
     ],
   },
