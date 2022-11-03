@@ -17,7 +17,7 @@ export class AuthAPIService {
   constructor(private http: HttpClient) {}
 
   public account(email: string, password: string) {
-    return this.http.post<login>('http://localhost:8081/api/login', {
+    return this.http.post<login>('http://localhost:8085/api/login', {
       email: email,
       password: password,
     });
@@ -31,12 +31,12 @@ export class AuthAPIService {
 
     const requestOptions = { headers: headers };
 
-    return this.http.get('http://localhost:8081/api/logout', requestOptions);
+    return this.http.get('http://localhost:8085/api/logout', requestOptions);
   }
 
   public register(email: string, password: string, cpassword: string) {
     return this.http.post<{ errCode: Number; message: string }>(
-      'http://localhost:8081/api/register',
+      'http://localhost:8085/api/register',
       {
         email: email,
         password: password,
@@ -46,17 +46,17 @@ export class AuthAPIService {
   }
 
   public category() {
-    return this.http.get<cate[]>('http://localhost:8081/api/category');
+    return this.http.get<cate[]>('http://localhost:8085/api/category');
   }
 
   public productPage(page?: number) {
     return this.http.get<product[][]>(
-      `http://localhost:8081/api/product/page?page=${page}`
+      `http://localhost:8085/api/product/page?page=${page}`
     );
   }
 
   public page() {
-    return this.http.get<page>(`http://localhost:8081/api/page`);
+    return this.http.get<page>(`http://localhost:8085/api/page`);
   }
 
   public profile(token: String | null) {
@@ -67,7 +67,7 @@ export class AuthAPIService {
 
     const requestOptions = { headers: headers };
     return this.http.get<profile>(
-      `http://localhost:8081/api/user/profile`,
+      `http://localhost:8085/api/user/profile`,
       requestOptions
     );
   }
@@ -80,7 +80,7 @@ export class AuthAPIService {
 
     const requestOptions = { headers: headers };
     return this.http.get<user[]>(
-      `http://localhost:8081/api/user/page?page=${page}`,
+      `http://localhost:8085/api/user/page?page=${page}`,
       requestOptions
     );
   }
@@ -93,7 +93,7 @@ export class AuthAPIService {
 
     const requestOptions = { headers: headers };
     return this.http.get<total>(
-      `http://localhost:8081/api/user/page/searchAll`,
+      `http://localhost:8085/api/user/page/searchAll`,
       requestOptions
     );
   }
@@ -106,7 +106,7 @@ export class AuthAPIService {
 
     const requestOptions = { headers: headers };
     return this.http.get<total>(
-      `http://localhost:8081/api/user/page/search/page?name=${name}`,
+      `http://localhost:8085/api/user/page/search/page?name=${name}`,
       requestOptions
     );
   }
@@ -119,14 +119,14 @@ export class AuthAPIService {
 
     const requestOptions = { headers: headers };
     return this.http.get<role[]>(
-      `http://localhost:8081/api/getAllRole`,
+      `http://localhost:8085/api/getAllRole`,
       requestOptions
     );
   }
 
   public search(token: String | null, page: number, name: string) {
     return this.http.post<user[]>(
-      `http://localhost:8081/api/user/page/search`,
+      `http://localhost:8085/api/user/page/search`,
       {
         name: name,
         authorization: `${token} bearer`,
@@ -142,7 +142,7 @@ export class AuthAPIService {
     cpassword: string,
     role: number
   ) {
-    return this.http.post<err>(`http://localhost:8081/api/createNewUser`, {
+    return this.http.post<err>(`http://localhost:8085/api/createNewUser`, {
       email: email,
       authorization: `${token} bearer`,
       password: password,
