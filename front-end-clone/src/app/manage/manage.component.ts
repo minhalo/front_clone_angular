@@ -76,7 +76,6 @@ export class ManageComponent implements OnInit {
 
     this.AuthAPIService.getAddress().subscribe((response) => {
       this.address = response;
-      console.log(response);
     });
     this.AuthAPIService.userManagePage(localStorage.getItem('token')).subscribe(
       (response) => {
@@ -189,7 +188,6 @@ export class ManageComponent implements OnInit {
             this.checkoutForm.value.search
           ).subscribe((response) => {
             this.pages = response.Total;
-            console.log(response);
           });
         } else {
           this.AuthAPIService.userManage(
@@ -225,7 +223,6 @@ export class ManageComponent implements OnInit {
             this.checkoutForm.value.search
           ).subscribe((response) => {
             this.pages = response.Total;
-            console.log(response);
           });
         } else {
           this.AuthAPIService.userManage(
@@ -280,7 +277,6 @@ export class ManageComponent implements OnInit {
         this.checkoutForm.value.search
       ).subscribe((response) => {
         this.pages = response.Total;
-        console.log(response);
       });
     } else {
       this.AuthAPIService.userManagePage(

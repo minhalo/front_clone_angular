@@ -5,6 +5,7 @@ import { HomeUserComponent } from './home-user/home-user.component';
 import { LoginComponent } from './login/login.component';
 import { ManageComponent } from './manage/manage.component';
 import { OtherComponent } from './other/other.component';
+import { PropManageComponent } from './prop-manage/prop-manage.component';
 import { UserMangerComponent } from './user-manger/user-manger.component';
 import { UserComponent } from './user/user.component';
 
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'other',
         component: OtherComponent,
+      },
+      {
+        path: 'product',
+        component: PropManageComponent,
       },
     ],
   },

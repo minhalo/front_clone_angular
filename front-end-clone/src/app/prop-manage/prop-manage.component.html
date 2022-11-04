@@ -1,0 +1,9 @@
+<div class="input-group mb-3">
+  <input type="file" class="form-control" (change)="onChange($event)" id="inputGroupFile02">
+  <label class="input-group-text" for="inputGroupFile02">Upload</label>
+</div>
+
+
+<div *ngIf="myImage">
+  <img [src]="myImage" width="250px" height="200px" />
+</div>

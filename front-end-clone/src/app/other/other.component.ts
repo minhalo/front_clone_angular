@@ -23,6 +23,9 @@ export class OtherComponent implements OnInit {
     private modalService: BsModalService
   ) {}
 
+  deleteAddress(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
   deleteRole(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -179,6 +182,25 @@ export class OtherComponent implements OnInit {
         }
       );
     }
+  }
+  deleteAddressByAdmin(id: number) {
+    this.AuthAPIService.deleteAddress(
+      localStorage.getItem('token'),
+      id
+    ).subscribe((response) => {
+      this.modalRef?.hide();
+      if (this.searchAddressForm.value.name) {
+        this.AuthAPIService.searchAddress(
+          this.searchRoleForm.value.name as string
+        ).subscribe((response) => {
+          this.address = response;
+        });
+      } else {
+        this.AuthAPIService.getAddress().subscribe((response) => {
+          this.address = response;
+        });
+      }
+    });
   }
 
   deleteGenderByAdmin(id: number) {

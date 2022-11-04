@@ -240,6 +240,20 @@ export class AuthAPIService {
     });
   }
 
+  public deleteAddress(token: String | null, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      authorization: `${token} bearer`,
+    });
+
+    return this.http.delete(
+      `http://localhost:8081/api/deleteAddress?id=${id}`,
+      {
+        headers: headers,
+      }
+    );
+  }
+
   public deleteUser(token: String | null, id: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',

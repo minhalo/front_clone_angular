@@ -31,6 +31,7 @@ import { UserMangerComponent } from './user-manger/user-manger.component';
 import { ManageComponent } from './manage/manage.component';
 import { OtherComponent } from './other/other.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
+import { PropManageComponent } from './prop-manage/prop-manage.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
     ManageComponent,
     OtherComponent,
     DetailProductComponent,
+    PropManageComponent,
   ],
   imports: [
     CarouselModule.forRoot(),
