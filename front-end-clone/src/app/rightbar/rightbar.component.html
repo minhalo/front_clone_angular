@@ -3,7 +3,7 @@
     <div *ngFor="let item of products" class="row">
       <div *ngFor="let detail of item" class="col d-flex justify-content-center align-items-center"
         style="margin-top: 4rem;">
-        <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/:{{detail.id}}">
+        <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/{{detail.id}}">
           <img src="{{detail.image}}" class="card-img-top list_img" alt="..." />
           <div class="card-body text-start">
             <h5 class="card-title" style="font-family: arial; color:darkred;">

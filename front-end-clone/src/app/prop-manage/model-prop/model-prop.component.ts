@@ -57,7 +57,10 @@ export class ModelPropComponent implements OnInit {
       ).subscribe((response) => {
         this.errReg = response.errCode;
         this.errMessage = response.errMessage;
-        console.log(response);
+        if (response.errCode === 0) {
+          // this.modalRef?.hide();
+          this.bsModalRef.hide();
+        }
       });
     }
   }
