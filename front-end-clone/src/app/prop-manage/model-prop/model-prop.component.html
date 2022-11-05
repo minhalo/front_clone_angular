@@ -1,0 +1,14 @@
+<div class="main_sec">
+  <form [formGroup]="createNewProductr" (ngSubmit)="onCreateProduct()" class="form_login">
+    <div class="input-group mb-3">
+      <input #myinput type="file" class="form-control" (change)="onChange($event)" formControlName="myImage"
+        id="inputGroupFile02">
+      <label class="input-group-text" for="inputGroupFile02">Upload</label>
+    </div>
+    <div *ngIf="myImage" class="mb-3">
+      <img *ngIf="myImage" [src]="myImage" width="100%" height="250px" />
+    </div>
+
+    <button class="btn btn-primary">Create</button>
+  </form>
+</div>
