@@ -4,9 +4,7 @@
       <div *ngFor="let detail of item" class="col d-flex justify-content-center align-items-center"
         style="margin-top: 4rem;">
         <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/:{{detail.id}}">
-          <img *ngIf="detail.type == 'Pubg'" src="{{detail.image}}" class="card-img-top list_img" alt="..." />
-          <img *ngIf="detail.type == 'Valorant'" src="{{detail.image}}" class="card-img-top list_img" alt="..." />
-          <img *ngIf="detail.type == 'Fifa 0nline 4'" src="{{detail.image}}" class="card-img-top list_img" alt="..." />
+          <img src="{{detail.image}}" class="card-img-top list_img" alt="..." />
           <div class="card-body text-start">
             <h5 class="card-title" style="font-family: arial; color:darkred;">
               {{ detail.name }}
