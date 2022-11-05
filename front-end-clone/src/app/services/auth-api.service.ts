@@ -11,6 +11,7 @@ import { role } from '../model/role';
 import { err, errCcc } from '../model/err';
 import { genders } from '../model/gender';
 import { userUpdate } from '../model/updateUser';
+import { NumberSymbol } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -226,6 +227,32 @@ export class AuthAPIService {
     return this.http.post<errCcc>(`http://localhost:8081/api/createRole`, {
       authorization: `${token} bearer`,
       name: name,
+    });
+  }
+
+  public createProducts(
+    token: String | null,
+    name: string,
+    ListId: number,
+    title: string,
+    note: string,
+    time: number,
+    discount: number,
+    price: number,
+    status: number,
+    myImage: any
+  ) {
+    return this.http.post<errCcc>(`http://localhost:8081/api/createProduct`, {
+      authorization: `${token} bearer`,
+      name: name,
+      id: ListId,
+      title: title,
+      note: note,
+      time: time,
+      discount: discount,
+      price: price,
+      status: status,
+      image: myImage,
     });
   }
 
