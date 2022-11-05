@@ -12,6 +12,8 @@ import { genders } from 'src/app/model/gender';
 })
 export class ModelPropComponent implements OnInit {
   list: genders[] = [];
+  errReg: number = 0;
+  errMessage: string = '';
   constructor(
     public bsModalRef: BsModalRef,
     private formBuilder: FormBuilder,
@@ -52,7 +54,11 @@ export class ModelPropComponent implements OnInit {
         Number(this.createNewProductr.value.price),
         Number(this.createNewProductr.value.status),
         this.myImage
-      ).subscribe((response) => {});
+      ).subscribe((response) => {
+        this.errReg = response.errCode;
+        this.errMessage = response.errMessage;
+        console.log(response);
+      });
     }
   }
 

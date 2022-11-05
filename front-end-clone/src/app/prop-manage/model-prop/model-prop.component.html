@@ -4,6 +4,8 @@
       <h5>Name</h5>
       <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="addon-wrapping"
         formControlName="name">
+      <small *ngIf="errReg === 1" class="text-danger">{{errMessage}}</small>
+
     </div>
     <div class="mb-3">
       <h5>Title</h5>
