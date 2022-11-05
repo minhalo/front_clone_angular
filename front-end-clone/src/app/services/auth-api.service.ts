@@ -200,6 +200,13 @@ export class AuthAPIService {
     );
   }
 
+  public searchLists(token: String | null, name: string) {
+    return this.http.post<genders[]>(`http://localhost:8081/api/searchList`, {
+      authorization: `${token} bearer`,
+      name: name,
+    });
+  }
+
   public searchGenders(name: string) {
     return this.http.post<genders[]>(`http://localhost:8081/api/searchGender`, {
       name: name,

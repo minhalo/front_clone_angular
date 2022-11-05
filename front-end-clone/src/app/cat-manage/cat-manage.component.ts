@@ -61,7 +61,21 @@ export class CatManageComponent implements OnInit {
     category: '1',
   });
 
-  onSearchList() {}
+  onSearchList() {
+    if (this.searchListForm.value.name) {
+      this.AuthAPIService.searchLists(
+        localStorage.getItem('token'),
+        this.searchListForm.value.name as string
+      ).subscribe((response) => {
+        this.list = response;
+      });
+    } else {
+      this.AuthAPIService.getList().subscribe((response) => {
+        this.list = response;
+      });
+    }
+  }
+
   onSearchCategory() {
     if (this.searchCategoryForm.value.name) {
       this.AuthAPIService.searchCategorys(
@@ -141,12 +155,12 @@ export class CatManageComponent implements OnInit {
       (response) => {
         this.modalRef?.hide();
         if (this.searchListForm.value.name) {
-          // this.AuthAPIService.(
-          //   localStorage.getItem('token'),
-          //   this.searchListForm.value.name as string
-          // ).subscribe((response) => {
-          //   this.list = response;
-          // });
+          this.AuthAPIService.searchLists(
+            localStorage.getItem('token'),
+            this.searchListForm.value.name as string
+          ).subscribe((response) => {
+            this.list = response;
+          });
         } else {
           this.AuthAPIService.getList().subscribe((response) => {
             this.list = response;
