@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CatManageComponent } from './cat-manage/cat-manage.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 import { LoginComponent } from './login/login.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'product',
         component: PropManageComponent,
+      },
+      {
+        path: 'category',
+        component: CatManageComponent,
       },
     ],
   },

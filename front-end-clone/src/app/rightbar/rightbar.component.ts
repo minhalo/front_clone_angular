@@ -18,21 +18,20 @@ export class RightbarComponent implements OnInit {
   constructor(private AuthAPIService: AuthAPIService) {}
 
   ngOnInit(): void {
-    this.AuthAPIService.productPage(this.page).subscribe((response) => {
-      this.products = response;
-    });
-
-    // page
-    this.AuthAPIService.page().subscribe((response) => {
-      this.pageon = response.page;
-    });
+    // this.AuthAPIService.productPage(this.page).subscribe((response) => {
+    //   this.products = response;
+    // });
+    // // page
+    // this.AuthAPIService.page().subscribe((response) => {
+    //   this.pageon = response.page;
+    // });
   }
 
-  pageChanged(event: PageChangedEvent): void {
-    this.page = event.page;
+  // pageChanged(event: PageChangedEvent): void {
+  //   this.page = event.page;
 
-    this.AuthAPIService.productPage(this.page).subscribe((response) => {
-      this.products = response;
-    });
-  }
+  //   this.AuthAPIService.productPage(this.page).subscribe((response) => {
+  //     this.products = response;
+  //   });
+  // }
 }
