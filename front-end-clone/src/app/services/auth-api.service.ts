@@ -184,6 +184,12 @@ export class AuthAPIService {
     );
   }
 
+  public getDetailProduct(id: number) {
+    return this.http.get<product>(
+      `http://localhost:8081/api/user/product/detail?id=${id}`
+    );
+  }
+
   public searchRoles(token: String | null, name: string) {
     return this.http.post<role[]>(`http://localhost:8081/api/searchRole`, {
       authorization: `${token} bearer`,

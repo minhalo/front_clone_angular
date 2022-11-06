@@ -1,5 +1,44 @@
 <app-header></app-header>
+<div class="main_container">
+  <div class="main_head_left">
+    <div class="left_head"><img class="img_head" src="{{detailProp.image}}" /></div>
+    <div class="right_head">
+      <h3>{{detailProp.name}}</h3>
+      <p>{{detailProp.title}}</p>
+      <p *ngIf="detailProp.status">Status: Available</p>
+      <p>Type: {{detailProp.type}}</p>
+      <p *ngIf="detailProp.discount <= 0">{{detailProp.price}}</p>
+      <p *ngIf="detailProp.discount > 0" style="text-decoration: line-through;">{{detailProp.price}}</p>
+      <p *ngIf="detailProp.discount > 0">{{detailProp.discount}}</p>
+      <p>Expiration(month): {{detailProp.timeleft}}</p>
+      <div *ngIf=" ((detailProp.price - (detailProp.price * ((detailProp.discount / detailProp.price) * 100) / 100)) /
+      detailProp.price *
+                100) > 0" class="card-text text-dark ">
+        <div class="percent">Discount: {{ (detailProp.price - (detailProp.price * ((detailProp.discount /
+          detailProp.price) * 100) /
+          100)) /
+          detailProp.price *
+          100 |
+          number: '1.0-0'}}%</div>
+      </div>
+    </div>
+  </div>
+  <div class="main_head_right">
+    <form class="d-flex flex-column">
+      <h3>Buy</h3>
+      <input style="width: 50px;" class="mb-3" />
+      <button class="btn btn-primary" style="width: 60px;">Buy</button>
+    </form>
 
-ok
+  </div>
+</div>
+<div style="padding-left: 1rem;">
+  <h3>Detail</h3>
+  {{detailProp.note}}
+
+</div>
+
+
+
 
 <app-footer></app-footer>

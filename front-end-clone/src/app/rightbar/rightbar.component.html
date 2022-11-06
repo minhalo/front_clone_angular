@@ -14,19 +14,19 @@
             </p>
             <p *ngIf="!detail.status" class="card-text  text-danger"
               style="font-size: calc(1rem * .8); color: darkgreen;">
-              No Available
+              Not Available
             </p>
-            <p class="card-text text-dark">
+            <!-- <p class="card-text text-dark">
               {{ detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100) | number: ".2" }}
-            </p>
-            <div *ngIf=" ((detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
+            </p> -->
+            <!-- <div *ngIf=" ((detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
               detail.price *
               100) > 0" class="card-text text-dark ">
               <div class="percent">{{ (detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
                 detail.price *
                 100 |
                 number: '1.0-0'}}%</div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
