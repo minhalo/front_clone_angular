@@ -1,0 +1,124 @@
+<div class="searching">
+  <h3>Role</h3>
+  <form [formGroup]="searchCategoryForm" (ngSubmit)="onSearchCategory()" class="form_login">
+    <input placeholder="&#61442; Search by name" class="input_search" formControlName="name" />
+    <button class="btn_searching">Search</button>
+  </form>
+  <div class="btn_searchings" (click)="createNewCategory(createCategory)">New</div>
+</div>
+
+<div class="cate_body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">Create At</th>
+        <th scope="col">Update At</th>
+        <th scope="col">action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of category">
+        <td scope="row">{{item.id}}</td>
+        <td scope="row">{{item.name}}</td>
+        <td>{{item.createdAt | date: 'dd/MM/yyyy'}}</td>
+        <td>{{item.updatedAt | date: 'dd/MM/yyyy'}}</td>
+        <td scope="row" class="btn_list">
+          <button class="btn_list_task" (click)="deleteCategory(deletetCategory)">Delete</button>
+          <ng-template #deletetCategory>
+            <div class="modal-body">
+              <div class="mb-3">
+                Are you sure? Delete category can not back up data again. Make sure you want to delete this category
+              </div>
+
+              <button (click)="deleteCategoryByAdmin(item.id)" class="btn btn-primary">Delete</button>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #createCategory>
+  <div class="modal-body">
+    <form [formGroup]="createNewCategorys" (ngSubmit)="onCreateCategorys()" class="form_login">
+      <div class="mb-3">
+        <h5>Name</h5>
+        <input type="text" class="form-control" placeholder="name" aria-label="name" aria-describedby="addon-wrapping"
+          formControlName="name">
+        <small *ngIf="errReg === 1" class="text-danger">{{errMessage}}</small>
+      </div>
+      <button class="btn btn-primary">Create</button>
+    </form>
+  </div>
+</ng-template>
+
+
+
+
+
+<div class="searching">
+  <h3>Role</h3>
+  <form [formGroup]="searchListForm" (ngSubmit)="onSearchList()" class="form_login">
+    <input placeholder="&#61442; Search by name" class="input_search" formControlName="name" />
+    <button class="btn_searching">Search</button>
+  </form>
+  <div class="btn_searchings" (click)="createNewList(createList)">New</div>
+</div>
+
+<div class="cate_body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">Create At</th>
+        <th scope="col">Update At</th>
+        <th scope="col">action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list">
+        <td scope="row">{{item.id}}</td>
+        <td scope="row">{{item.name}}</td>
+        <td>{{item.createdAt | date: 'dd/MM/yyyy'}}</td>
+        <td>{{item.updatedAt | date: 'dd/MM/yyyy'}}</td>
+        <td scope="row" class="btn_list">
+          <button class="btn_list_task" (click)="deleteList(deletetList)">Delete</button>
+          <ng-template #deletetList>
+            <div class="modal-body">
+              <div class="mb-3">
+                Are you sure? Delete List can not back up data again. Make sure you want to delete this List
+              </div>
+
+              <button (click)="deleteListByAdmin(item.id)" class="btn btn-primary">Delete</button>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #createList>
+  <div class="modal-body">
+    <form [formGroup]="createNewLists" (ngSubmit)="onCreateLists()" class="form_login">
+      <div class="mb-3">
+        <h5>Category</h5>
+        <select class="form-select" formControlName="category">
+          <option value="{{item.id}}" *ngFor="let item of category" selected>{{item.name}}
+          </option>
+        </select>
+        <h5>Name</h5>
+        <input type="text" class="form-control" placeholder="name" aria-label="name" aria-describedby="addon-wrapping"
+          formControlName="name">
+        <small *ngIf="errReg === 1" class="text-danger">{{errMessage}}</small>
+      </div>
+      <button class="btn btn-primary">Create</button>
+    </form>
+  </div>
+</ng-template>

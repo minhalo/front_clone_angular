@@ -3,39 +3,30 @@
     <div *ngFor="let item of products" class="row">
       <div *ngFor="let detail of item" class="col d-flex justify-content-center align-items-center"
         style="margin-top: 4rem;">
-        <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/:{{detail.id}}">
-          <img *ngIf="detail.type == 'Pubg'" src="../../assets/List/pubg.jpeg" class="card-img-top list_img"
-            alt="..." />
-          <img *ngIf="detail.type == 'Valorant'" src="../../assets/List/valorant.jpg" class="card-img-top list_img"
-            alt="..." />
+        <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/{{detail.id}}">
+          <img src="{{detail.image}}" class="card-img-top list_img" alt="..." />
           <div class="card-body text-start">
             <h5 class="card-title" style="font-family: arial; color:darkred;">
-              {{ detail.name }} {{ detail.id }}
+              {{ detail.name }}
             </h5>
-            <p class="card-text text-dark">
-              {{ detail.type }}
-            </p>
             <p *ngIf="detail.status" class="card-text" style="font-size: calc(1rem * .8); color: darkgreen;">
               Available
             </p>
-            <p *ngIf="!detail.status" class="card-text " style="font-size: calc(1rem * .8); color: darkgreen;">
-              No Available
+            <p *ngIf="!detail.status" class="card-text  text-danger"
+              style="font-size: calc(1rem * .8); color: darkgreen;">
+              Not Available
             </p>
-            <p class="card-text text-dark">
+            <!-- <p class="card-text text-dark">
               {{ detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100) | number: ".2" }}
-            </p>
-            <div *ngIf=" ((detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
+            </p> -->
+            <!-- <div *ngIf=" ((detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
               detail.price *
               100) > 0" class="card-text text-dark ">
               <div class="percent">{{ (detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
                 detail.price *
                 100 |
                 number: '1.0-0'}}%</div>
-
-            </div>
-
-
-            <!-- <div class="btn btn-primary mt-3">Buy</div> -->
+            </div> -->
           </div>
         </div>
       </div>

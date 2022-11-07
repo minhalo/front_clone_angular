@@ -21,8 +21,7 @@ export class RightbarComponent implements OnInit {
     this.AuthAPIService.productPage(this.page).subscribe((response) => {
       this.products = response;
     });
-
-    // page
+    // // page
     this.AuthAPIService.page().subscribe((response) => {
       this.pageon = response.page;
     });
