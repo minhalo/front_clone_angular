@@ -162,6 +162,14 @@ export class AuthAPIService {
     });
   }
 
+  public addCart(userId: string | null, productId: number, total: number) {
+    return this.http.post<errCcc>(`http://localhost:8081/api/addToCart`, {
+      userId: userId,
+      productId: productId,
+      total: total,
+    });
+  }
+
   public banUser(token: String | null, id: number) {
     return this.http.patch<err>(`http://localhost:8081/api/banUser`, {
       authorization: `${token} bearer`,

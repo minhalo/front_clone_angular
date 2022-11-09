@@ -205,3 +205,18 @@ textarea {
 .details_content {
   text-align: justify;
 }
+
+.alert {
+  position: fixed;
+  top: 20%;
+
+  transition: 2s;
+  animation-duration: 5s;
+}
+
+@media screen and (max-device-width: 670px) {
+  .product-image {
+    width: 300px;
+    height: auto;
+  }
+}

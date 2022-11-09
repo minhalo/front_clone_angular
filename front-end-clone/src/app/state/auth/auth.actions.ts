@@ -31,4 +31,11 @@ export const loginOut = createAction(
   props<{ token: string | null }>()
 );
 
+export const updateRequest = createAction(
+  '[Cart] Request',
+  props<{
+    coin: number;
+  }>()
+);
+
 export const loginOutRefresh = createAction('[Logout] Logout');

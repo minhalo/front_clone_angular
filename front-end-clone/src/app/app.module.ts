@@ -34,6 +34,7 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import { PropManageComponent } from './prop-manage/prop-manage.component';
 import { CatManageComponent } from './cat-manage/cat-manage.component';
 import { ModelPropComponent } from './prop-manage/model-prop/model-prop.component';
+import { CartComponentComponent } from './cart-component/cart-component.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ModelPropComponent } from './prop-manage/model-prop/model-prop.componen
     PropManageComponent,
     CatManageComponent,
     ModelPropComponent,
+    CartComponentComponent,
   ],
   imports: [
     CarouselModule.forRoot(),

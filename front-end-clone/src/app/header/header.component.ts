@@ -14,8 +14,8 @@ import { Observable } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder } from '@angular/forms';
 import { AuthAPIService } from '../services/auth-api.service';
-
 import * as formAction from '../state/auth/auth.actions';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -59,6 +59,10 @@ export class HeaderComponent implements OnInit {
 
   profile() {
     this.router.navigate(['/me']);
+  }
+
+  cart() {
+    this.router.navigate(['/cart']);
   }
 
   ngOnInit(): void {}
