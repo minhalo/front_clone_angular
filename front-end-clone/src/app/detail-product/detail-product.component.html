@@ -1,76 +1,59 @@
 <app-header></app-header>
-<!-- <div class="main_container">
-  <div class="main_head_left">
-    <div class="left_head"><img class="img_head" src="{{detailProp.image}}" /></div>
-    <div class="right_head">
-      <h3>{{detailProp.name}}</h3>
-      <p>{{detailProp.title}}</p>
-      <p *ngIf="detailProp.status">Status: Available</p>
-      <p>Type: {{detailProp.type}}</p>
-      <p *ngIf="detailProp.discount <= 0">{{detailProp.price}}</p>
-      <p *ngIf="detailProp.discount > 0" style="text-decoration: line-through;">{{detailProp.price}}</p>
-      <p *ngIf="detailProp.discount > 0">{{detailProp.discount}}</p>
-      <p>Expiration(month): {{detailProp.timeleft}}</p>
-      <div *ngIf=" ((detailProp.price - (detailProp.price * ((detailProp.discount / detailProp.price) * 100) / 100)) /
-      detailProp.price *
-                100) > 0" class="card-text text-dark ">
-        <div class="percent">Discount: {{ (detailProp.price - (detailProp.price * ((detailProp.discount /
-          detailProp.price) * 100) /
-          100)) /
-          detailProp.price *
-          100 |
-          number: '1.0-0'}}%</div>
-      </div>
-    </div>
-  </div>
-  <div class="main_head_right">
-    <form class="d-flex flex-column">
-      <h3>Buy</h3>
-      <input style="width: 50px;" class="mb-3" />
-      <button class="btn btn-primary" style="width: 60px;">Buy</button>
-    </form>
-
-  </div>
-</div>
-<div style="padding-left: 1rem;">
-  <h3>Detail</h3>
-  {{detailProp.note}}
-
-</div> -->
-
-
 
 <div class="container-sm">
   <div class="product-info">
     <div class="row justify-content-center mt-5">
       <div class="col">
-        <img class="product-image" src="{{detailProp.image}}" alt="product_item" />
+        <div class="product-image">
+          <img
+            class="product-image"
+            style=""
+            src="{{ detailProp.image }}"
+            alt="product_item"
+          />
+        </div>
       </div>
       <div class="col">
         <p>Product</p>
-        <h2>{{detailProp.name}}</h2>
+        <h2>{{ detailProp.name }}</h2>
         <p *ngIf="detailProp.status">Status: <span>Available</span></p>
-        <p *ngIf="!detailProp.status">Status: <span class="text-danger">Not Available</span></p>
-        <p>Genre: {{detailProp.type}}</p>
-        <p class="real-cost"><b>VND: {{detailProp.discount | number: ".2"}}</b></p>
+        <p *ngIf="!detailProp.status">
+          Status: <span class="text-danger">Not Available</span>
+        </p>
+        <p>Genre: {{ detailProp.type }}</p>
+        <p class="real-cost">
+          <b>VND: {{ detailProp.discount | number: ".2" }}</b>
+        </p>
         <p class="sale mb-3">
-          <b style="text-decoration: line-through; font-size: calc(1rem * .8);">VND: {{detailProp.price | number:
-            ".2"}}</b><span class="percent-sale text-light p-1" style="font-size: calc(1rem * .7); margin-left: 1rem;"
-            *ngIf=" ((detailProp.price - (detailProp.price * ((detailProp.discount / detailProp.price) * 100) / 100)) /
-            detailProp.price *
-                      100) > 0">{{
-            (detailProp.price - (detailProp.price *
-            ((detailProp.discount /
-            detailProp.price) * 100) /
-            100)) /
-            detailProp.price *
-            100 |
-            number: '1.0-0'}}%</span>
+          <b style="text-decoration: line-through; font-size: calc(1rem * 1)"
+            >VND: {{ detailProp.price | number: ".2" }}</b
+          ><span
+            class="percent-sale text-light p-1"
+            style="font-size: calc(1rem * 0.8); margin-left: 0.5rem"
+            *ngIf="
+              ((detailProp.price -
+                (detailProp.price *
+                  ((detailProp.discount / detailProp.price) * 100)) /
+                  100) /
+                detailProp.price) *
+                100 >=
+              0
+            "
+            >{{
+              ((detailProp.price -
+                (detailProp.price *
+                  ((detailProp.discount / detailProp.price) * 100)) /
+                  100) /
+                detailProp.price) *
+                100 | number: "1.0-0"
+            }}%</span
+          >
         </p>
 
         <div class="expiry-date">
-          <p>Expiry date: <b>{{detailProp.timeleft}} Month</b></p>
-
+          <p>
+            Expiry date: <b>{{ detailProp.timeleft }} Month</b>
+          </p>
         </div>
         <div class="payment row">
           <!-- <button class="buy col-5">
@@ -92,7 +75,7 @@
       <h1>Product Detail</h1>
     </div>
     <div class="col-8 details_content">
-      {{detailProp.note}}
+      {{ detailProp.note }}
     </div>
   </div>
   <hr />
@@ -110,8 +93,13 @@
       <div class="row">
         <div class="col">
           <div class="d-flex flex-start">
-            <img class="rounded-circle shadow-1-strong me-3"
-              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" width="65" height="65" />
+            <img
+              class="rounded-circle shadow-1-strong me-3"
+              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+              alt="avatar"
+              width="65"
+              height="65"
+            />
             <div class="flex-grow-1 flex-shrink-1">
               <div>
                 <div class="d-flex justify-content-between align-items-center">
@@ -131,13 +119,19 @@
 
               <div class="d-flex flex-start mt-4">
                 <a class="me-3" href="#">
-                  <img class="rounded-circle shadow-1-strong"
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp" alt="avatar" width="65"
-                    height="65" />
+                  <img
+                    class="rounded-circle shadow-1-strong"
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp"
+                    alt="avatar"
+                    width="65"
+                    height="65"
+                  />
                 </a>
                 <div class="flex-grow-1 flex-shrink-1">
                   <div>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
                       <p class="mb-1">
                         Customer care - Minh Cuong
                         <span class="material-symbols-outlined verified">
@@ -147,11 +141,10 @@
                       </p>
                     </div>
                     <p class="large mb-0">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing
-                      elit. Veritatis, amet soluta! Eius voluptas, ducimus
-                      illo ipsum ratione maxime adipisci, eum reiciendis, non
-                      veritatis earum quibusdam id repudiandae tempore velit
-                      est?
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Veritatis, amet soluta! Eius voluptas, ducimus illo ipsum
+                      ratione maxime adipisci, eum reiciendis, non veritatis
+                      earum quibusdam id repudiandae tempore velit est?
                     </p>
                     <a href="">Answer</a>
                   </div>
@@ -161,8 +154,13 @@
           </div>
 
           <div class="d-flex flex-start">
-            <img class="rounded-circle shadow-1-strong me-3"
-              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" width="65" height="65" />
+            <img
+              class="rounded-circle shadow-1-strong me-3"
+              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+              alt="avatar"
+              width="65"
+              height="65"
+            />
             <div class="flex-grow-1 flex-shrink-1">
               <div>
                 <div class="d-flex justify-content-between align-items-center">
@@ -182,13 +180,19 @@
 
               <div class="d-flex flex-start mt-4">
                 <a class="me-3" href="#">
-                  <img class="rounded-circle shadow-1-strong"
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp" alt="avatar" width="65"
-                    height="65" />
+                  <img
+                    class="rounded-circle shadow-1-strong"
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp"
+                    alt="avatar"
+                    width="65"
+                    height="65"
+                  />
                 </a>
                 <div class="flex-grow-1 flex-shrink-1">
                   <div>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
                       <p class="mb-1">
                         Customer care - Minh Cuong
                         <span class="material-symbols-outlined verified">
@@ -198,11 +202,10 @@
                       </p>
                     </div>
                     <p class="large mb-0">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing
-                      elit. Veritatis, amet soluta! Eius voluptas, ducimus
-                      illo ipsum ratione maxime adipisci, eum reiciendis, non
-                      veritatis earum quibusdam id repudiandae tempore velit
-                      est?
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Veritatis, amet soluta! Eius voluptas, ducimus illo ipsum
+                      ratione maxime adipisci, eum reiciendis, non veritatis
+                      earum quibusdam id repudiandae tempore velit est?
                     </p>
                     <a href="">Answer</a>
                   </div>
@@ -215,6 +218,5 @@
     </div>
   </div>
 </div>
-
 
 <app-footer></app-footer>
