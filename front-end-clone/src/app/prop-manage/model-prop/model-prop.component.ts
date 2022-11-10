@@ -41,6 +41,20 @@ export class ModelPropComponent implements OnInit {
     ListId: '1',
   });
 
+  demo() {
+    this.createNewProductr.reset({
+      name: 'Anh luc dep trai',
+      title: 'Anh luc ngu',
+      status: 1,
+      price: 0,
+      discount: 0,
+      time: 0,
+      note: 'Yeu anh luc',
+      myImage: this.myImage,
+      ListId: '1',
+    });
+  }
+
   onCreateProduct() {
     if (this.createNewProductr.value.myImage) {
       this.AuthAPIService.createProducts(

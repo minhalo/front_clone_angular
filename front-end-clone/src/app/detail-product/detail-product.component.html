@@ -15,8 +15,13 @@
       </div>
       <div class="col">
         <p>Product</p>
+<<<<<<< HEAD
         <h2>{{ detailProp.name }}</h2>
         <small>{{detailProp.title}}</small>
+=======
+        <h2>{{detailProp.name}}</h2>
+        <small style="opacity: .6;">{{detailProp.title}}</small>
+>>>>>>> 1a533ee7f56f548832df67f5c2f02ff9b680c3dd
         <p *ngIf="detailProp.status">Status: <span>Available</span></p>
         <p *ngIf="!detailProp.status">
           Status: <span class="text-danger">Not Available</span>
