@@ -55,16 +55,18 @@
             Expiry date: <b>{{ detailProp.timeleft }} Month</b>
           </p>
         </div>
-        <div class="payment row">
-          <!-- <button class="buy col-5">
-            <span class="material-symbols-outlined">credit_card</span>
-            <span class="text-payment">Buy now</span>
-          </button> -->
+        <div class="payment row " *ngIf="detailProp.status && (token$ | async)">
 
-          <button class="add col-5">
+          <div class="mb-3">
+            <input class="col-2" style="outline: none;" [(ngModel)]="num" />
+            <small class="mb-3" *ngIf="errReg" style="color: red; margin-left: 6px;">{{errMessage}}</small>
+          </div>
+
+          <button class=" add col-5" (click)="addCarts()">
             <span class="material-symbols-outlined">shopping_cart</span>
             <span class="text-payment">Add to Cart</span>
           </button>
+
         </div>
       </div>
     </div>
@@ -220,3 +222,7 @@
 </div>
 
 <app-footer></app-footer>
+
+<alert type="success" class="alert" *ngIf="check">
+  <strong>Add To Cart successfuly!</strong>
+</alert>

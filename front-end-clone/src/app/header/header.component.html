@@ -160,8 +160,12 @@
         <li role="menuitem" (click)="profile()">
           Profile
         </li>
-        <li role="menuitem">
+        <li role="menuitem" class="position-relative" (click)="cart()">
           Cart
+          <span class="position-absolute top-0 left-0 start-0 translate-middle badge rounded-pill bg-danger"
+            *ngIf="badge > 0">
+            {{badge}}
+          </span>
         </li>
 
         <li role="menuitem" (click)="logout()">

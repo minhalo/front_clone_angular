@@ -9,13 +9,14 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AppStateInterface } from '../model/appState.interface';
+import { badge, badged } from '../model/other';
 import { nameSelector, tokenSelector } from '../state/auth/auth.selector';
 import { Observable } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder } from '@angular/forms';
 import { AuthAPIService } from '../services/auth-api.service';
-
 import * as formAction from '../state/auth/auth.actions';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -31,7 +32,7 @@ export class HeaderComponent implements OnInit {
   errCode$: Observable<Number | null>;
   errMes: String | null = localStorage.getItem('mes');
   ischeck$: Observable<Boolean>;
-
+  badge: number = 0;
   idchecklogin: boolean = false;
   idchecklogout: boolean = false;
   idcheckreg: boolean = false;
@@ -43,6 +44,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private store: Store<AppStateInterface>,
+    private stored: Store<badged>,
     private router: Router,
     private modalService: BsModalService,
     private formBuilder: FormBuilder,
@@ -61,7 +63,17 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/me']);
   }
 
-  ngOnInit(): void {}
+  cart() {
+    this.router.navigate(['/cart']);
+  }
+
+  ngOnInit(): void {
+    this.AuthAPIService.bad(localStorage.getItem('token')).subscribe(
+      (response) => {
+        this.badge = response;
+      }
+    );
+  }
 
   logout() {
     this.idchecklogout = true;

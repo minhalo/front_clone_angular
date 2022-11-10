@@ -42,5 +42,10 @@ export const reducers = createReducer(
     token: null,
     role: null,
     coin: 0,
+  })),
+
+  on(formAction.updateRequest, (state, action) => ({
+    ...state,
+    coin: action.coin,
   }))
 );
