@@ -16,6 +16,7 @@
       <div class="col">
         <p>Product</p>
         <h2>{{ detailProp.name }}</h2>
+        <small>{{detailProp.title}}</small>
         <p *ngIf="detailProp.status">Status: <span>Available</span></p>
         <p *ngIf="!detailProp.status">
           Status: <span class="text-danger">Not Available</span>

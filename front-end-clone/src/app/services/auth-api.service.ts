@@ -76,7 +76,7 @@ export class AuthAPIService {
   }
 
   public historyCart(token: string | null) {
-    return this.http.post<cart[]>(`http://localhost:8081/api/cartme`, {
+    return this.http.post<cart[]>(`http://localhost:8085/api/cartme`, {
       authorization: `${token} bearer`,
     });
   }
@@ -153,7 +153,7 @@ export class AuthAPIService {
   }
 
   public bad(token: String | null) {
-    return this.http.post<number>(`http://localhost:8081/api/badge`, {
+    return this.http.post<number>(`http://localhost:8085/api/badge`, {
       authorization: `${token} bearer`,
     });
   }
@@ -175,7 +175,7 @@ export class AuthAPIService {
   }
 
   public addCart(userId: string | null, productId: number, total: number) {
-    return this.http.post<errCcc>(`http://localhost:8081/api/addToCart`, {
+    return this.http.post<errCcc>(`http://localhost:8085/api/addToCart`, {
       userId: userId,
       productId: productId,
       total: total,
@@ -323,7 +323,7 @@ export class AuthAPIService {
   }
 
   public deleteCart(id: number) {
-    return this.http.delete(`http://localhost:8081/api/deleteCart?id=${id}`);
+    return this.http.delete(`http://localhost:8085/api/deleteCart?id=${id}`);
   }
 
   public deleteGender(token: String | null, id: number) {

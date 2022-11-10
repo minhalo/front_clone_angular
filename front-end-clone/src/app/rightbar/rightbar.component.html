@@ -7,7 +7,10 @@
           <img src="{{detail.image}}" class="card-img-top list_img" alt="..." />
           <div class="card-body text-start">
             <h5 class="card-title" style="font-family: arial; color:darkred;">
-              {{ detail.name }}
+              <p class="card-name">
+
+                {{ detail.name }}
+              </p>
             </h5>
             <p *ngIf="detail.status" class="card-text" style="font-size: calc(1rem * .8); color: darkgreen;">
               Available
