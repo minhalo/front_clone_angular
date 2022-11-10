@@ -11,4 +11,5 @@ export interface cart {
   CartId: number;
   name: string;
   total: number;
+  createdAt: Date;
 }

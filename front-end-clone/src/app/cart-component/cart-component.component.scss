@@ -8,3 +8,18 @@
     height: auto;
   }
 }
+
+.tables {
+  border-radius: 5px 5px;
+  background-color: rgb(0, 0, 0, 0.6);
+  color: white;
+  border-bottom: 1px solid #343539;
+}
+
+.back {
+  background: url("../../assets/background/backgr.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid #343539;
+  border-top: 1px solid #343539;
+}
