@@ -9,6 +9,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AppStateInterface } from '../model/appState.interface';
+import { badge, badged } from '../model/other';
 import { nameSelector, tokenSelector } from '../state/auth/auth.selector';
 import { Observable } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -31,7 +32,7 @@ export class HeaderComponent implements OnInit {
   errCode$: Observable<Number | null>;
   errMes: String | null = localStorage.getItem('mes');
   ischeck$: Observable<Boolean>;
-
+  badge: number = 0;
   idchecklogin: boolean = false;
   idchecklogout: boolean = false;
   idcheckreg: boolean = false;
@@ -43,6 +44,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private store: Store<AppStateInterface>,
+    private stored: Store<badged>,
     private router: Router,
     private modalService: BsModalService,
     private formBuilder: FormBuilder,
@@ -65,7 +67,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.AuthAPIService.bad(localStorage.getItem('token')).subscribe(
+      (response) => {
+        this.badge = response;
+      }
+    );
+  }
 
   logout() {
     this.idchecklogout = true;

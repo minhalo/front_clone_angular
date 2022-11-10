@@ -11,7 +11,7 @@ import { role } from '../model/role';
 import { err, errCcc } from '../model/err';
 import { genders } from '../model/gender';
 import { userUpdate } from '../model/updateUser';
-import { NumberSymbol } from '@angular/common';
+import { cart } from '../model/other';
 
 @Injectable({
   providedIn: 'root',
@@ -73,6 +73,12 @@ export class AuthAPIService {
       `http://localhost:8081/api/user/profile`,
       requestOptions
     );
+  }
+
+  public historyCart(token: string | null) {
+    return this.http.post<cart[]>(`http://localhost:8081/api/cartme`, {
+      authorization: `${token} bearer`,
+    });
   }
 
   public userManage(token: String | null, page?: number) {
@@ -144,6 +150,12 @@ export class AuthAPIService {
         page: page,
       }
     );
+  }
+
+  public bad(token: String | null) {
+    return this.http.post<number>(`http://localhost:8081/api/badge`, {
+      authorization: `${token} bearer`,
+    });
   }
 
   public adminCreate(
@@ -308,6 +320,10 @@ export class AuthAPIService {
     return this.http.delete(`http://localhost:8081/api/deleteRole?id=${id}`, {
       headers: headers,
     });
+  }
+
+  public deleteCart(id: number) {
+    return this.http.delete(`http://localhost:8081/api/deleteCart?id=${id}`);
   }
 
   public deleteGender(token: String | null, id: number) {

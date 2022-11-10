@@ -1,7 +1,7 @@
 import { AuthAPIService } from './../../services/auth-api.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, switchMap } from 'rxjs';
+import { map, mergeMap } from 'rxjs';
 import * as formAction from '../../state/auth/auth.actions';
 
 @Injectable()
@@ -22,6 +22,7 @@ export class authEffects {
     private AuthAPIService: AuthAPIService
   ) {}
 }
+
 @Injectable()
 export class outEffects {
   getPost$ = createEffect(() =>

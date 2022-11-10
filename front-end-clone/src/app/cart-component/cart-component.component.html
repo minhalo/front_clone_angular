@@ -1,3 +1,44 @@
 <app-header></app-header>
-helo
+
+<div class="container-xl mt-3 " *ngIf="cart.length <= 0">
+  <h3>Cart</h3>
+  <p>You do not have any orders yet</p>
+  <div class="ma">
+    <img class="img" src="../../assets/background/order.jpg" />
+  </div>
+
+</div>
+<div class="container-xl mt-3" *ngIf="cart.length > 0">
+  <h3>Cart</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Orders</th>
+        <th scope="col">Product</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart;">
+        <th scope="row">{{item.CartId}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.total | number: ".2"}} VND</td>
+        <td>
+          <button class="btn btn-primary d-block mb-2" routerLink="/product/{{item.ProductId}}">View</button>
+          <button class="btn btn-primary d-block mb-2" (click)="openModal1(template)">Delete</button>
+          <ng-template #template>
+            <div class="modal-body">
+              <p>Delete Cart can not back up again. Make sure that you want to delete cart</p>
+              <button class="btn btn-primary d-block mb-2" (click)="deleteCart(item.CartId)">Delete</button>
+            </div>
+          </ng-template>
+          <!-- (click)="deleteCart(item.CartId) -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 <app-footer></app-footer>
