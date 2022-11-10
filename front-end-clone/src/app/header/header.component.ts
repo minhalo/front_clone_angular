@@ -68,11 +68,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.AuthAPIService.bad(localStorage.getItem('token')).subscribe(
-      (response) => {
-        this.badge = response;
-      }
-    );
+    if (localStorage.getItem('token')) {
+      this.AuthAPIService.bad(localStorage.getItem('token')).subscribe(
+        (response) => {
+          this.badge = response;
+        }
+      );
+    }
   }
 
   logout() {

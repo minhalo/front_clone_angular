@@ -12,6 +12,7 @@ import { UserMangerComponent } from './user-manger/user-manger.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
+  { path: '', component: HomeUserComponent },
   { path: 'product/:id', component: DetailProductComponent },
   { path: 'homeUser', component: HomeUserComponent },
   { path: 'me', component: UserComponent },
@@ -39,7 +40,6 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', component: HomeUserComponent },
 ];
 
 @NgModule({
