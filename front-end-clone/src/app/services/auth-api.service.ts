@@ -58,6 +58,10 @@ export class AuthAPIService {
     );
   }
 
+  public getSugg() {
+    return this.http.get<product[]>(`http://localhost:8081/api/getSuggestGame`);
+  }
+
   public productPage(page?: number) {
     return this.http.get<product[][]>(
       `http://localhost:8081/api/product/page?page=${page}`

@@ -158,6 +158,8 @@ export class HeaderComponent implements OnInit {
           localStorage.setItem('role', x.login.role as string);
           localStorage.setItem('ischeck', 'true');
           localStorage.setItem('coin', String(x.login.coin));
+          localStorage.setItem('status', String(x.login.status));
+
           this.modalRef?.hide();
           this.checkoutForm.reset();
         } else {
@@ -165,5 +167,7 @@ export class HeaderComponent implements OnInit {
         }
       })
       .subscribe();
+
+    // console.log(Number(localStorage.getItem('status')));
   }
 }

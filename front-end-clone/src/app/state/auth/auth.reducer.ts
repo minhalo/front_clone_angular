@@ -6,7 +6,7 @@ export const initialState: login = {
   ischeck: Boolean(localStorage.getItem('ischeck')),
   errCode: -1,
   message: '',
-  status: -1,
+  status: Number(localStorage.getItem('status')),
   token: localStorage.getItem('token'),
   name: localStorage.getItem('name'),
   role: localStorage.getItem('role'),

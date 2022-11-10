@@ -44,6 +44,7 @@ import { ModelPropComponent } from './prop-manage/model-prop/model-prop.componen
 import { CartComponentComponent } from './cart-component/cart-component.component';
 import { HistoryUserComponent } from './user/history-user/history-user.component';
 import { AccountComponent } from './user/account/account.component';
+import { ErrComponentComponent } from './err-component/err-component.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { AccountComponent } from './user/account/account.component';
     CartComponentComponent,
     HistoryUserComponent,
     AccountComponent,
+    ErrComponentComponent,
   ],
   imports: [
     RichTextEditorModule,

@@ -15,6 +15,8 @@ export class RightbarComponent implements OnInit {
   currentpage: number = 1;
   page: number = 1;
   pageon: number = 1;
+
+  prodit: product[] = [];
   constructor(private AuthAPIService: AuthAPIService) {}
 
   ngOnInit(): void {
@@ -25,6 +27,13 @@ export class RightbarComponent implements OnInit {
     this.AuthAPIService.page().subscribe((response) => {
       this.pageon = response.page;
     });
+    this.AuthAPIService.getSugg().subscribe((response) => {
+      this.prodit = response;
+    });
+  }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({ behavior: 'smooth' });
   }
 
   pageChanged(event: PageChangedEvent): void {

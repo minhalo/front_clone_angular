@@ -1,6 +1,6 @@
 <div class="main_right">
   <div class="back_">
-    <div class="container text-center " id="right">
+    <div class="container text-center " #test id="right">
       <div *ngFor="let item of products" class="row">
         <div *ngFor="let detail of item" class="col d-flex justify-content-center align-items-center"
           style="margin-top: 4rem;">
@@ -21,11 +21,41 @@
       </div>
     </div>
     <div class="pagin mt-5" style="padding: 0 20px;">
-      <pagination #refect class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="pageon"
+      <pagination (click)="scroll(test)" class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="pageon"
         previousText=" &lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentpage"
         (pageChanged)="pageChanged($event)">
       </pagination>
     </div>
   </div>
+</div>
 
+<div class="below_container">
+  <div class="container-xl h-100 d-flex text-danger justify-content-center align-items-center flex-column"
+    style="font-family: Poppins bold;">
+    <div style="background-color: rgb(0, 0, 0,0.5); padding: 5px 10px; border-radius: 5px 5px;">
+      <h1 style="margin: 0;">New game? Try now</h1>
+    </div>
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col d-flex justify-content-center align-items-center" style="margin-top: 4rem;"
+            *ngFor="let detail of prodit">
+            <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/{{detail.id}}">
+              <img src="{{detail.image}}" class="card-img-top list_img" alt="..." />
+              <div class="card-body text-start">
+                <h5 class="card-title" style="font-family: arial; color:darkred;">
+                  <p class="detail_name text-light" style="font-family: Poppins bold;">
+                    {{ detail.name }}
+                  </p>
+
+                </h5>
+
+                <p style="font-size: calc(1rem * .7);">Genre: <strong class="text-danger">{{detail.type}}</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

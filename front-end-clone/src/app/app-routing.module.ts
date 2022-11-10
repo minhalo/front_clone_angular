@@ -11,11 +11,13 @@ import { UserMangerComponent } from './user-manger/user-manger.component';
 import { HistoryUserComponent } from './user/history-user/history-user.component';
 import { UserComponent } from './user/user.component';
 import { AccountComponent } from './user/account/account.component';
+import { ErrComponentComponent } from './err-component/err-component.component';
 
 const routes: Routes = [
   { path: '', component: HomeUserComponent },
   { path: 'product/:id', component: DetailProductComponent },
   { path: 'homeUser', component: HomeUserComponent },
+  { path: 'err', component: ErrComponentComponent },
   {
     path: 'me',
     component: UserComponent,
