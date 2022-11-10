@@ -105,6 +105,20 @@ export class HeaderComponent implements OnInit {
     cpassword: '',
   });
 
+  demoadmin() {
+    this.checkoutForm.reset({
+      email: 'admin@gmail.com',
+      password: 'Minlvip123!',
+    });
+  }
+
+  demouser() {
+    this.checkoutForm.reset({
+      email: 'duongdoican@gmail.com',
+      password: 'Minlvip123!',
+    });
+  }
+
   onSubmitReg() {
     this.idcheckreg = true;
     setTimeout(() => {

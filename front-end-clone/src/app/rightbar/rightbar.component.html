@@ -1,44 +1,31 @@
 <div class="main_right">
-  <div class="container text-center " id="right">
-    <div *ngFor="let item of products" class="row">
-      <div *ngFor="let detail of item" class="col d-flex justify-content-center align-items-center"
-        style="margin-top: 4rem;">
-        <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/{{detail.id}}">
-          <img src="{{detail.image}}" class="card-img-top list_img" alt="..." />
-          <div class="card-body text-start">
-            <h5 class="card-title" style="font-family: arial; color:darkred;">
-              <p class="detail_name">
-                {{ detail.name }}
-              </p>
+  <div class="back_">
+    <div class="container text-center " id="right">
+      <div *ngFor="let item of products" class="row">
+        <div *ngFor="let detail of item" class="col d-flex justify-content-center align-items-center"
+          style="margin-top: 4rem;">
+          <div class="card h-100 cards" style="width: 15rem; " routerLink="/product/{{detail.id}}">
+            <img src="{{detail.image}}" class="card-img-top list_img" alt="..." />
+            <div class="card-body text-start">
+              <h5 class="card-title" style="font-family: arial; color:darkred;">
+                <p class="detail_name text-light" style="font-family: Poppins bold;">
+                  {{ detail.name }}
+                </p>
 
-            </h5>
-            <p *ngIf="detail.status" class="card-text" style="font-size: calc(1rem * .8); color: darkgreen;">
-              Available
-            </p>
-            <p *ngIf="!detail.status" class="card-text  text-danger"
-              style="font-size: calc(1rem * .8); color: darkgreen;">
-              Not Available
-            </p>
-            <!-- <p class="card-text text-dark">
-              {{ detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100) | number: ".2" }}
-            </p> -->
-            <!-- <div *ngIf=" ((detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
-              detail.price *
-              100) > 0" class="card-text text-dark ">
-              <div class="percent">{{ (detail.price - (detail.price * ((detail.discount / detail.price) * 100) / 100)) /
-                detail.price *
-                100 |
-                number: '1.0-0'}}%</div>
-            </div> -->
+              </h5>
+
+              <p style="font-size: calc(1rem * .7);">Genre: <strong class="text-danger">{{detail.type}}</strong></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="pagin mt-5" style="padding: 0 20px;">
+      <pagination #refect class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="pageon"
+        previousText=" &lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentpage"
+        (pageChanged)="pageChanged($event)">
+      </pagination>
+    </div>
   </div>
-  <div class="pagin mt-5" style="padding: 0 20px;">
-    <pagination #refect class="pagination flex-wrap" [boundaryLinks]="true" [totalItems]="pageon"
-      previousText=" &lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentpage"
-      (pageChanged)="pageChanged($event)">
-    </pagination>
-  </div>
+
 </div>

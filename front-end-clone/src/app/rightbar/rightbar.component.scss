@@ -1,8 +1,10 @@
 .main_right {
-  background-color: #202124;
+  background: url("../../assets/background/backgroundHomepage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   border-bottom: 1px solid #343539;
   color: white;
-  padding-top: 10px;
+  background-position: center;
 
   .detail_name {
     display: inline-block;
@@ -10,14 +12,20 @@
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
+    transition: 1s;
+    &:hover {
+      color: red !important;
+      z-index: 999;
+    }
   }
   .cards {
     cursor: pointer;
+    background-color: rgb(23, 30, 34);
     transition: 1s;
     &:hover {
       box-shadow: rgba(255, 255, 255, 0.19) 0px 10px 20px,
         rgba(255, 255, 255, 0.23) 0px 6px 6px;
-      transform: translate(0, -10%);
+      // transform: translate(0, -10%);
     }
     .percent {
       display: inline-block;
@@ -40,6 +48,10 @@
   }
 
   .list_img {
-    height: 200px;
+    height: 160px;
   }
+}
+
+.back_ {
+  background-color: rgb(19, 20, 23, 0.8);
 }
