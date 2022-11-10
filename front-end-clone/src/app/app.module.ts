@@ -18,6 +18,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {
+  RichTextEditorModule,
+  ToolbarService,
+  HtmlEditorService,
+  LinkService,
+  ImageService,
+} from '@syncfusion/ej2-angular-richtexteditor';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -61,6 +68,7 @@ import { AccountComponent } from './user/account/account.component';
     AccountComponent,
   ],
   imports: [
+    RichTextEditorModule,
     CarouselModule.forRoot(),
     PaginationModule.forRoot(),
     AccordionModule.forRoot(),
@@ -79,7 +87,7 @@ import { AccountComponent } from './user/account/account.component';
     EffectsModule.forRoot([authEffects, outEffects]),
     StoreModule.forRoot({}),
   ],
-  providers: [],
+  providers: [ToolbarService, HtmlEditorService, LinkService, ImageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

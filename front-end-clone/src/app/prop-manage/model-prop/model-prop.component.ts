@@ -39,6 +39,7 @@ export class ModelPropComponent implements OnInit {
     note: '',
     myImage: this.myImage,
     ListId: '1',
+    // values: '',
   });
 
   demo() {
@@ -56,6 +57,7 @@ export class ModelPropComponent implements OnInit {
   }
 
   onCreateProduct() {
+    // console.log(this.createNewProductr.value.values);
     if (this.createNewProductr.value.myImage) {
       this.AuthAPIService.createProducts(
         localStorage.getItem('token'),

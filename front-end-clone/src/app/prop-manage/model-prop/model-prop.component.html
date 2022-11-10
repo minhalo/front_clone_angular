@@ -32,11 +32,16 @@
       <input type="text" class="form-control" placeholder="Time" aria-label="Time" aria-describedby="addon-wrapping"
         formControlName="time">
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <h5>Note</h5>
       <input type="text" class="form-control" placeholder="Note" aria-label="Note" aria-describedby="addon-wrapping"
         formControlName="note">
-    </div>
+    </div> -->
+    <ejs-richtexteditor formControlName="note">
+      <ng-template #valueTemplate>
+        <p></p>
+      </ng-template>
+    </ejs-richtexteditor>
     <div class="mb-3">
       <h5>List</h5>
       <select class="form-select" formControlName="ListId">
