@@ -1,5 +1,5 @@
-<div class="category">
-  <div class="btn_cat btn-group" dropdown>
+<div class="category" *ngIf="(role$|async) === 'Admin'">
+  <!-- <div class="btn_cat btn-group" dropdown>
     <div id="button-animated" dropdownToggle type="button" class="dropdown-toggle" aria-controls="dropdown-animated">
       Category <span class="caret"></span>
     </div>
@@ -9,7 +9,7 @@
         <p>{{item.name}}</p>
       </li>
     </ul>
-  </div>
+  </div> -->
   <div *ngIf="(role$|async) === 'Admin'" class=" admin">
     <div class="btn_manage" routerLink="/manage">User Manage</div>
   </div>

@@ -65,7 +65,8 @@
       <form *ngIf="(token$ | async)" [formGroup]="checkoutFormo" (ngSubmit)="onSubmit()">
         <h2>Comment</h2>
         <p>Average response tine: 5 minutes!</p>
-        <textarea formControlName="name" type="text" placeholder="Enter the text comment"></textarea>
+        <textarea style="outline: none;" formControlName="name" type="text"
+          placeholder="Enter the text comment"></textarea>
         <button type="submit" class="post-comment float-end">
           <span class="material-symbols-outlined">near_me</span>
           <span>Post a comment</span>
