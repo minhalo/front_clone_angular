@@ -35,6 +35,8 @@ import { PropManageComponent } from './prop-manage/prop-manage.component';
 import { CatManageComponent } from './cat-manage/cat-manage.component';
 import { ModelPropComponent } from './prop-manage/model-prop/model-prop.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
+import { HistoryUserComponent } from './user/history-user/history-user.component';
+import { AccountComponent } from './user/account/account.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
     CatManageComponent,
     ModelPropComponent,
     CartComponentComponent,
+    HistoryUserComponent,
+    AccountComponent,
   ],
   imports: [
     CarouselModule.forRoot(),

@@ -1,3 +1,4 @@
+import { mes } from './../model/other';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { product } from '../model/product';
@@ -7,6 +8,7 @@ import { AppStateInterface } from '../model/appState.interface';
 import { select, Store } from '@ngrx/store';
 import { tokenSelector } from '../state/auth/auth.selector';
 import * as formAction from '../state/auth/auth.actions';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-detail-product',
@@ -14,6 +16,7 @@ import * as formAction from '../state/auth/auth.actions';
   styleUrls: ['./detail-product.component.scss'],
 })
 export class DetailProductComponent implements OnInit {
+  message: mes[] = [];
   id: number = 0;
   private sub: any;
   errReg: number = 0;
@@ -37,9 +40,27 @@ export class DetailProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private AuthAPIService: AuthAPIService,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private formBuilder: FormBuilder
   ) {
     this.token$ = this.store.pipe(select(tokenSelector));
+  }
+
+  checkoutFormo = this.formBuilder.group({
+    name: '',
+  });
+
+  onSubmit() {
+    this.AuthAPIService.createMessage(
+      localStorage.getItem('token'),
+      this.id,
+      this.checkoutFormo.value.name as string
+    ).subscribe((response) => {
+      this.checkoutFormo.reset();
+      this.AuthAPIService.getMessage(this.id).subscribe((response) => {
+        this.message = response;
+      });
+    });
   }
 
   ngOnInit(): void {
@@ -49,6 +70,10 @@ export class DetailProductComponent implements OnInit {
 
     this.AuthAPIService.getDetailProduct(this.id).subscribe((response) => {
       this.detailProp = response;
+    });
+
+    this.AuthAPIService.getMessage(this.id).subscribe((response) => {
+      this.message = response;
     });
   }
 

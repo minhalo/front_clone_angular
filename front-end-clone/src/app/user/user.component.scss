@@ -1,13 +1,63 @@
-.main_profile {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0;
+// .main_profile {
+//   display: flex;
+//   gap: 1rem;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 2rem 0;
+// }
+
+// @media only screen and (max-device-width: 479px) {
+//   .main_profile {
+//     flex-direction: column !important;
+//   }
+// }
+
+.main_container {
+  position: relative;
+  background: url("../../assets/background/backgroundPr.jpg");
+  height: 500px;
+  background-size: cover;
+  padding-left: 2rem;
+  .profile {
+    top: 30%;
+    position: absolute;
+    width: 400px;
+    height: 120px;
+    border-radius: 1px 1px;
+    // background: rgb(0, 0, 0, 0.4);
+    display: flex;
+    .child_profile {
+      padding: 5px 10px;
+      color: white;
+      height: 100%;
+      width: 70%;
+      background: rgb(0, 0, 0, 0.7);
+    }
+  }
 }
 
-@media only screen and (max-device-width: 479px) {
-  .main_profile {
-    flex-direction: column !important;
+.nav {
+  padding: 5px 10px;
+  background: grey;
+  cursor: pointer;
+}
+
+.navs {
+  padding: 5px 10px;
+  background: red;
+  cursor: pointer;
+}
+
+@media screen and (max-device-width: 500px) {
+  .main_container {
+    padding: 0;
+    .profile {
+      flex-direction: column;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
   }
 }

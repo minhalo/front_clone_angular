@@ -11,7 +11,7 @@ import { role } from '../model/role';
 import { err, errCcc } from '../model/err';
 import { genders } from '../model/gender';
 import { userUpdate } from '../model/updateUser';
-import { cart } from '../model/other';
+import { cart, mes } from '../model/other';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +50,12 @@ export class AuthAPIService {
 
   public category() {
     return this.http.get<cate[]>('http://localhost:8081/api/category');
+  }
+
+  public getMessage(id: number) {
+    return this.http.get<mes[]>(
+      `http://localhost:8081/api/getMes?ProductId=${id}`
+    );
   }
 
   public productPage(page?: number) {
@@ -152,6 +158,24 @@ export class AuthAPIService {
     );
   }
 
+  public updateMe(
+    token: String | null,
+    name: string,
+    address: number,
+    gender: number,
+    gmail: string,
+    age: number
+  ) {
+    return this.http.post(`http://localhost:8081/api/updateMe`, {
+      name: name,
+      authorization: `${token} bearer`,
+      age: age,
+      gender: gender,
+      address: address,
+      gmail: gmail,
+    });
+  }
+
   public bad(token: String | null) {
     return this.http.post<number>(`http://localhost:8081/api/badge`, {
       authorization: `${token} bearer`,
@@ -171,6 +195,19 @@ export class AuthAPIService {
       password: password,
       cpassword: cpassword,
       role: role,
+    });
+  }
+
+  public createMessage(
+    token: String | null,
+    ProductId: number,
+    message: string
+  ) {
+    return this.http.post<err>(`http://localhost:8081/api/createMessage`, {
+      authorization: `${token} bearer`,
+
+      ProductId: ProductId,
+      message: message,
     });
   }
 

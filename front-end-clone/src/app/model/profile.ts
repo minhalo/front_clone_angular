@@ -4,7 +4,7 @@ export interface profile {
   name: string;
   age: number | null;
   coin: number;
-  AddressId: string;
-  GenderId: string;
+  AddressId: number;
+  GenderId: number;
   gmail: string | null;
 }

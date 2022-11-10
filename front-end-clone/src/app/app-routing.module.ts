@@ -4,18 +4,26 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
 import { CatManageComponent } from './cat-manage/cat-manage.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HomeUserComponent } from './home-user/home-user.component';
-import { LoginComponent } from './login/login.component';
 import { ManageComponent } from './manage/manage.component';
 import { OtherComponent } from './other/other.component';
 import { PropManageComponent } from './prop-manage/prop-manage.component';
 import { UserMangerComponent } from './user-manger/user-manger.component';
+import { HistoryUserComponent } from './user/history-user/history-user.component';
 import { UserComponent } from './user/user.component';
+import { AccountComponent } from './user/account/account.component';
 
 const routes: Routes = [
   { path: '', component: HomeUserComponent },
   { path: 'product/:id', component: DetailProductComponent },
   { path: 'homeUser', component: HomeUserComponent },
-  { path: 'me', component: UserComponent },
+  {
+    path: 'me',
+    component: UserComponent,
+    children: [
+      { path: '', component: HistoryUserComponent },
+      { path: 'account', component: AccountComponent },
+    ],
+  },
   { path: 'cart', component: CartComponentComponent },
 
   {

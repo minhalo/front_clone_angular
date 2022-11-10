@@ -62,10 +62,10 @@
     </div>
 
     <div class="comment ">
-      <form *ngIf="(token$ | async)">
+      <form *ngIf="(token$ | async)" [formGroup]="checkoutFormo" (ngSubmit)="onSubmit()">
         <h2>Comment</h2>
         <p>Average response tine: 5 minutes!</p>
-        <textarea type="text" placeholder="Enter the text comment"></textarea>
+        <textarea formControlName="name" type="text" placeholder="Enter the text comment"></textarea>
         <button type="submit" class="post-comment float-end">
           <span class="material-symbols-outlined">near_me</span>
           <span>Post a comment</span>
@@ -74,27 +74,28 @@
       <div class="show-comment">
         <div class="row">
           <div class="col">
-            <div class="d-flex flex-start">
-              <img class="rounded-circle shadow-1-strong me-3"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" width="65" height="65" />
+            <div class="d-flex flex-start mb-3" *ngFor="let item of message">
+              <img *ngIf="item.GenderId === 2 || item.GenderId===1" class="rounded-circle shadow-1-strong me-3"
+                src="../../assets/background/malemale.jpg" alt="avatar" width="65" height="65" />
+              <img *ngIf="item.GenderId === 3" class="rounded-circle shadow-1-strong me-3"
+                src="../../assets/background/femalefemale.jpg" alt="avatar" width="65" height="65" />
               <div class="flex-grow-1 flex-shrink-1">
                 <div>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-1">Hong My</p>
+                  <div *ngIf="item.RoleId === 2" class="text-danger d-flex justify-content-between align-items-center">
+                    <p class="mb-1">{{item.name}}</p>
+                  </div>
+                  <div *ngIf="item.RoleId != 2" class="d-flex justify-content-between align-items-center">
+                    <p class="mb-1">{{item.name}}</p>
                   </div>
                   <p class="small mb-0 time-comment">
-                    Comment on 22022-11-02 20:15:24
+                    Comment on {{item.createdAt| date: 'dd/MM/yyyy'}}
                   </p>
                   <p class="large mb-0">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eveniet, alias provident natus aspernatur quia a, ea dicta
-                    numquam quaerat, ipsa debitis architecto deserunt neque modi
-                    earum soluta velit dignissimos accusamus.
+                    {{item.mes}}
                   </p>
-                  <a href="">Answer</a>
                 </div>
 
-                <div class="d-flex flex-start mt-4">
+                <!-- <div class="d-flex flex-start mt-4">
                   <a class="me-3" href="#">
                     <img class="rounded-circle shadow-1-strong"
                       src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp" alt="avatar" width="65"
@@ -121,60 +122,11 @@
                       <a href="">Answer</a>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 
-            <div class="d-flex flex-start">
-              <img class="rounded-circle shadow-1-strong me-3"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" width="65" height="65" />
-              <div class="flex-grow-1 flex-shrink-1">
-                <div>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-1">Ngo Tien Dung</p>
-                  </div>
-                  <p class="small mb-0 time-comment">
-                    Comment on 22022-11-02 20:15:24
-                  </p>
-                  <p class="large mb-0">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eveniet, alias provident natus aspernatur quia a, ea dicta
-                    numquam quaerat, ipsa debitis architecto deserunt neque modi
-                    earum soluta velit dignissimos accusamus.
-                  </p>
-                  <a href="">Answer</a>
-                </div>
 
-                <div class="d-flex flex-start mt-4">
-                  <a class="me-3" href="#">
-                    <img class="rounded-circle shadow-1-strong"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp" alt="avatar" width="65"
-                      height="65" />
-                  </a>
-                  <div class="flex-grow-1 flex-shrink-1">
-                    <div>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <p class="mb-1">
-                          Customer care - Minh Cuong
-                          <span class="material-symbols-outlined verified">
-                            verified
-                          </span>
-                          <span class="time-comment">22022-11-02 20:15:24</span>
-                        </p>
-                      </div>
-                      <p class="">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Veritatis, amet soluta! Eius voluptas, ducimus
-                        illo ipsum ratione maxime adipisci, eum reiciendis, non
-                        veritatis earum quibusdam id repudiandae tempore velit
-                        est?
-                      </p>
-                      <a href="">Answer</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

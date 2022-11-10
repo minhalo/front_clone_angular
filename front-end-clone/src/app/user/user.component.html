@@ -1,20 +1,35 @@
 <app-header></app-header>
 
-<div class="main_profile">
-  <div *ngIf="(role$ | async) === 'Admin'"><img src="../../assets/avatar/admin.png" /></div>
-  <div *ngIf="(role$ | async) != 'Admin'"><img src="../../assets/avatar/user.png" /></div>
-  <div>
-    <h5>Name: {{name}}</h5>
-    <p *ngIf="age">Age: {{age}}</p>
-    <p *ngIf="!age">Age: (none)</p>
-    <p>Gender: {{gender}}</p>
-    <p>Address: {{address}}</p>
+<div class="main_container">
 
-    <p *ngIf="gmail">Age: {{gmail}}</p>
-    <p *ngIf="!gmail">Age: (none)</p>
-    <p>Coin: {{coin | number: ".2"}} VND</p>
+  <div class="profile">
+    <img *ngIf="(role$ | async) === 'Admin'" style="height: 100%; width: 30%;"
+      src="../../assets/background/malemale.jpg" />
+    <img *ngIf="gender=== 1 && (role$ | async) != 'Admin'" style="height: 100%; width: 30%;"
+      src="../../assets/background/malemale.jpg" />
+    <img *ngIf="gender=== 2  && (role$ | async) != 'Admin'" style="height: 100%; width: 30%;"
+      src="../../assets/background/femalefemale.jpg" />
+    <div class="child_profile">
+      <div><i class="bi bi-person-circle"></i> {{name}}</div>
+      <div><i class="bi bi-coin"></i> {{coin | number: ".2"}}</div>
+      <div><i class="bi bi-basket-fill"></i> {{badge}}</div>
+    </div>
+
   </div>
 </div>
+<div style="background-color: black; border-bottom:1px solid black; padding-top: 20px;">
+
+  <div class="container-xl ">
+    <div class="mb-3 text-light d-flex">
+      <div class="nav" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="navs" routerLink="/me">Purchased
+      </div>
+      <div class="nav" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="navs" routerLink="/me/account">
+        Account</div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
 
 
 <app-footer></app-footer>

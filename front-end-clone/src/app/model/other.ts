@@ -13,3 +13,11 @@ export interface cart {
   total: number;
   createdAt: Date;
 }
+
+export interface mes {
+  mes: string;
+  name: string;
+  createdAt: string;
+  GenderId: number;
+  RoleId: number;
+}

@@ -16,12 +16,11 @@ export class UserComponent implements OnInit {
   name: string = '';
   age: number | null = 0;
   image: number = 0;
-  gender: string = '';
-  address: string = '';
+  gender: number = 0;
   gmail: string | null = '';
   role$: Observable<String | null>;
   coin: number = 0;
-
+  badge: number = 0;
   constructor(
     private route: ActivatedRoute,
     private store: Store<AppStateInterface>,
@@ -32,6 +31,13 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((queryParams) => {});
+    if (localStorage.getItem('token')) {
+      this.AuthAPIService.bad(localStorage.getItem('token')).subscribe(
+        (response) => {
+          this.badge = response;
+        }
+      );
+    }
 
     this.AuthAPIService.profile(localStorage.getItem('token')).subscribe(
       (response: profile) => {
@@ -39,7 +45,6 @@ export class UserComponent implements OnInit {
         this.age = response.age;
         this.image = response.image;
         this.gender = response.GenderId;
-        this.address = response.AddressId;
         this.gmail = response.gmail;
         this.coin = response.coin;
       }

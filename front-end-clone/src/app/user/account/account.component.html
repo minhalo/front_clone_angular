@@ -1,0 +1,27 @@
+<div class="text-light mb-5">
+  <form [formGroup]="checkoutFormu" (ngSubmit)="onSubmit()">
+    <h3><i class="bi bi-person-fill"></i> Account</h3>
+    <p>Name</p>
+    <input [attr.disabled]="check" type="text" class="form-control mb-3" placeholder="Username" aria-label="Username"
+      aria-describedby="basic-addon1" formControlName="name">
+    <p>Age</p>
+    <input [attr.disabled]="check" type="text" class="form-control mb-3" placeholder="Username" aria-label="Username"
+      aria-describedby="basic-addon1" formControlName="age">
+    <p>Gender</p>
+    <select [attr.disabled]="check" class="form-select mb-3" formControlName="gender">
+      <option value="{{item.id}}" *ngFor="let item of genders" selected>{{item.name}}
+      </option>
+    </select>
+    <p>Address</p>
+    <select [attr.disabled]="check" class="form-select mb-3" formControlName="address">
+      <option value="{{item.id}}" *ngFor="let item of addresss" selected>{{item.name}}
+      </option>
+    </select>
+    <p>Gmail</p>
+    <input [attr.disabled]="check" type="text" class="form-control mb-3" formControlName="gmail" placeholder="gmail"
+      aria-label="Username" aria-describedby="basic-addon1">
+    <button *ngIf="check === null" class="btn btn-primary">Submit</button>
+
+  </form>
+  <button *ngIf="check === false" (click)="checked()" class="btn btn-primary">Update</button>
+</div>
