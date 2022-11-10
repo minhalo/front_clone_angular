@@ -4,6 +4,13 @@
   color: white;
   padding-top: 10px;
 
+  .detail_name {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
   .cards {
     cursor: pointer;
     transition: 1s;
