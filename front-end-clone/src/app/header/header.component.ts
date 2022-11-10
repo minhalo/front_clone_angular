@@ -167,7 +167,5 @@ export class HeaderComponent implements OnInit {
         }
       })
       .subscribe();
-
-    // console.log(Number(localStorage.getItem('status')));
   }
 }
