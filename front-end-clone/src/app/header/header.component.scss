@@ -185,6 +185,9 @@
   .header_search {
     width: 40vw !important;
   }
+  .header_search {
+    display: none !important;
+  }
 }
 
 @media only screen and (max-device-width: 350px) {
